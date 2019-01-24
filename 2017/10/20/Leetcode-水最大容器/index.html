@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2019/1 | Lujing</title>
+  <title>[Leetcode]水最大容器 | Lujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lujing">
-<meta property="og:url" content="https://carolinecomet.github.io/archives/2019/01/index.html">
+  <meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leetcode]水最大容器">
+<meta property="og:url" content="https://carolinecomet.github.io/2017/10/20/Leetcode-水最大容器/index.html">
 <meta property="og:site_name" content="Lujing">
 <meta property="og:locale" content="zh-Han">
+<meta property="og:image" content="http://static.simpledesktops.com/uploads/desktops/2018/08/29/Venice.png.625x385_q100.png">
+<meta property="og:updated_time" content="2018-10-20T09:44:17.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lujing">
+<meta name="twitter:title" content="[Leetcode]水最大容器">
+<meta name="twitter:image" content="http://static.simpledesktops.com/uploads/desktops/2018/08/29/Venice.png.625x385_q100.png">
   
     <link rel="alternate" href="/atom.xml" title="Lujing" type="application/atom+xml">
   
@@ -64,40 +68,88 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/23/article-title/" class="archive-article-date">
-  <time datetime="2019-01-23T09:26:13.000Z" itemprop="datePublished">Jan 23</time>
+        <section id="main"><article id="post-Leetcode-水最大容器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/20/Leetcode-水最大容器/" class="article-date">
+  <time datetime="2017-10-20T09:33:48.000Z" itemprop="datePublished">2017-10-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/23/article-title/">article title</a>
+    <h1 class="article-title" itemprop="name">
+      [Leetcode]水最大容器
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="description"></p>
 
+<p><img src="http://static.simpledesktops.com/uploads/desktops/2018/08/29/Venice.png.625x385_q100.png" alt="" style="width:100%"></p>
+<a id="more"></a>
+<p>1.穷举法时，需要循坏两个列表长度，时间复杂度大</p>
+<pre><code>class Solution:
+def maxArea(self, height):
+    &quot;&quot;&quot;
+    :type height: List[int]
+    :rtype: int
+    &quot;&quot;&quot;
+    length=len(height)
+    mian=[]
+    while length&gt;1:
+        for i in range(length-1):
+
+            minhei=min(height[0],height[i+1])
+            mianji=minhei*(i+1)
+            mian.append(mianji)
+            resule=max(mian)
+
+        height.pop(0)
+        length=length-1
+    return resule
+</code></pre><p>clasee=Solution()<br>t=clasee.maxArea([1,8,6,2,5,4,8,3,7])<br>print(t)</p>
+<p>2.先计算最远处两根之间的面积，然后较短的一根往里面，这样可以保证虽然距离缩小但是面积不一定缩小，长的一根永远在<br>class Solution:<br>    def maxArea(self, height):<br>        “””<br>        :type height: List[int]<br>        :rtype: int<br>        “””<br>        length=(len(height))<br>        i=0<br>        j=length-1<br>        result=0<br>        for n in range((length-1)):<br>            chang=min(height[i],height[j])<br>            mianji=chang*(j-i)<br>            result=max(mianji,result)</p>
+<pre><code>    if height[i]&lt;height[j]:
+        i=i+1
+    else:
+        j=j-1
+return result
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://carolinecomet.github.io/2017/10/20/Leetcode-水最大容器/" data-id="cjr9zk6r800038ot81ozqc8gs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/21/Leetcode-最长不重复子串/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [Leetcode]最长不重复子串
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
 
 </section>
         
