@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="c++,算法,">
+  <meta name="keywords" content="生活,">
 
 
 
@@ -86,18 +86,17 @@
 
 
 
-<meta name="description" content="Given a string, find the length of the longest substring without repeating characters.给定一个字符串，找到最长子字符串的长度而不重复字符。">
-<meta name="keywords" content="c++,算法">
+<meta name="keywords" content="生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Leetcode]最长不重复子串">
-<meta property="og:url" content="https://carolinecomet.github.io/2017/10/21/Leetcode-最长不重复子串/index.html">
+<meta property="og:title" content="Lujing--Blog">
+<meta property="og:url" content="https://carolinecomet.github.io/2018/01/24/Lujing-Blog/index.html">
 <meta property="og:site_name" content="Lujing">
-<meta property="og:description" content="Given a string, find the length of the longest substring without repeating characters.给定一个字符串，找到最长子字符串的长度而不重复字符。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-24T09:04:00.528Z">
+<meta property="og:image" content="https://wx2.sinaimg.cn/mw1024/60f3f4e1gy1fcy3i9tmzmj20jg0iq0tz.jpg">
+<meta property="og:updated_time" content="2019-01-24T11:56:14.568Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Leetcode]最长不重复子串">
-<meta name="twitter:description" content="Given a string, find the length of the longest substring without repeating characters.给定一个字符串，找到最长子字符串的长度而不重复字符。">
+<meta name="twitter:title" content="Lujing--Blog">
+<meta name="twitter:image" content="https://wx2.sinaimg.cn/mw1024/60f3f4e1gy1fcy3i9tmzmj20jg0iq0tz.jpg">
 
 
 
@@ -127,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://carolinecomet.github.io/2017/10/21/Leetcode-最长不重复子串/">
+  <link rel="canonical" href="https://carolinecomet.github.io/2018/01/24/Lujing-Blog/">
 
 
 
 
 
-  <title>[Leetcode]最长不重复子串 | Lujing</title>
+  <title>Lujing--Blog | Lujing</title>
   
 
 
@@ -292,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2017/10/21/Leetcode-最长不重复子串/">
+    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2018/01/24/Lujing-Blog/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lujing">
@@ -309,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Leetcode]最长不重复子串</h1>
+          <h1 class="post-title" itemprop="name headline">Lujing--Blog</h1>
         
 
         <div class="post-meta">
@@ -321,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-21T11:23:47+08:00">
-                2017-10-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T19:40:44+08:00">
+                2018-01-24
               </time>
             
 
@@ -344,8 +343,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
                   </a>
                 </span>
 
@@ -375,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  427
+                  43
                 </span>
               
 
@@ -412,64 +411,7 @@
       
 
       
-        <p></p><p class="description"></p><br>Given a string, find the length of the longest substring without repeating characters.<br>给定一个字符串，找到最长子字符串的长度而不重复字符。<p></p>
-<a id="more"></a>
-<h1 id="一-穷举循环法"><a href="#一-穷举循环法" class="headerlink" title="一.穷举循环法"></a>一.穷举循环法</h1><pre><code>class Solution:
-def lengthOfLongestSubstring(self, s):
-    &quot;&quot;&quot;
-    :type s: str
-    :rtype: int
-    &quot;&quot;&quot;
-    max1=1
-    n=0
-    if s==&quot;&quot;:
-        max1=0
-        return max1
-    else:
-        for i in s:
-            n=n+1
-            t=1
-
-            p=n
-            for j in s[n:]:
-
-                if j in s[n-1:p]:
-                    max1 = max(t, max1)
-                    break
-
-                else:
-                    t=t+1
-                    max1=max(t,max1)
-                p=p+1
-        return max1
-</code></pre><p>两次循环<br>外循环：遍历字符串中每一个字符<br>内循环：遍历外循环字符串字符之后的每一个字符串，一旦发现和外循环字符重复，就退出内循环<br>每次内循环更新最长字串的值</p>
-<h1 id="二-滑动窗口法"><a href="#二-滑动窗口法" class="headerlink" title="二.滑动窗口法"></a>二.滑动窗口法</h1><pre><code>class Solution:
-def lengthOfLongestSubstring(self, s):
-    &quot;&quot;&quot;
-    :type s: str
-    :rtype: int
-    &quot;&quot;&quot;
-    n=len(s)
-    if s==&quot;&quot;:
-        return 0
-    if n==1:
-        return 1
-    else:
-        i=0
-        j=1
-        max1=1
-        while (i&lt;n and j&lt;n):     
-            if s[j] in s[i:j]:
-                i=i+1
-                j=i+1
-            else:
-                j=j+1
-                max1=max(max1,(j-i))
-
-        return max1
-</code></pre><p>solution中给出了一种滑动窗口概念，在java中运用。<br>在窗口中存储当前数据：[i，j）j一开始等于i。<br>当j索引不在窗口里，窗口末端向后滑，并返回j-i<br>当j索引在窗口里，窗口前端向后滑<br>保证遍历每一个字符<br></p>
-<h2 id="运用到python中"><a href="#运用到python中" class="headerlink" title="运用到python中"></a>运用到python中</h2><p>和第一种方法的想法是完全一样的，但是算法不同，时间复杂度节省了很多<br>遍历每一个字符和子字符串 可以用滑动窗口的想法来遍历，而不需要用两个for循环</p>
-<h1 id="三-还有一种更简便的方法"><a href="#三-还有一种更简便的方法" class="headerlink" title="三.还有一种更简便的方法"></a>三.还有一种更简便的方法</h1><p>看不懂了。。。。</p>
+        <p></p><p class="description"></p><br><img src="https://wx2.sinaimg.cn/mw1024/60f3f4e1gy1fcy3i9tmzmj20jg0iq0tz.jpg"><br><a id="more"></a><br>    之前弄过一次博客，后来被我荒废了，主题配置文件还出了错，这次就重新来过。<br>    作为一名研一的工科女生<p></p>
 
       
     </div>
@@ -487,9 +429,7 @@ def lengthOfLongestSubstring(self, s):
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
-          
-            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+            <a href="/tags/生活/" rel="tag"><i class="fa fa-tag"></i> 生活</a>
           
         </div>
       
@@ -502,8 +442,8 @@ def lengthOfLongestSubstring(self, s):
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/20/Leetcode-水最大容器/" rel="next" title="[Leetcode]水最大容器">
-                <i class="fa fa-chevron-left"></i> [Leetcode]水最大容器
+              <a href="/2017/10/21/Leetcode-最长不重复子串/" rel="next" title="[Leetcode]最长不重复子串">
+                <i class="fa fa-chevron-left"></i> [Leetcode]最长不重复子串
               </a>
             
           </div>
@@ -512,8 +452,8 @@ def lengthOfLongestSubstring(self, s):
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/24/Lujing-Blog/" rel="prev" title="Lujing--Blog">
-                Lujing--Blog <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/21/leetcode-最长回子串/" rel="prev" title="[leetcode]----最长回子串">
+                [leetcode]----最长回子串 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,17 +532,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -700,22 +631,6 @@ var jiathis_config={
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-穷举循环法"><span class="nav-number">1.</span> <span class="nav-text">一.穷举循环法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-滑动窗口法"><span class="nav-number">2.</span> <span class="nav-text">二.滑动窗口法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运用到python中"><span class="nav-number">2.1.</span> <span class="nav-text">运用到python中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-还有一种更简便的方法"><span class="nav-number">3.</span> <span class="nav-text">三.还有一种更简便的方法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

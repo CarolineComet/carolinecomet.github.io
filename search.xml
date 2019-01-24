@@ -3,13 +3,24 @@
   <entry>
     <title><![CDATA[[leetcode]----最长回子串]]></title>
     <url>%2F2018%2F10%2F21%2Fleetcode-%E6%9C%80%E9%95%BF%E5%9B%9E%E5%AD%90%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.给出一个字符串，找到字符串中最长的回文串，你可以假设字符串的最大长度是1000 Example 1:Input: “babad”Output: “bab”Note: “aba” is also a valid answer.Example 2:Input: “cbbd”Output: “bb” 方法一（差劲）：这是我看到题目的第一想法，相当于遍历了整个字符串，然后当找到和索引i相同的索引j时，再往里面判断是否是对称 class Solution: def longestPalindrome(self, s): &quot;&quot;&quot; :type s: str :rtype: str &quot;&quot;&quot; i = 0 j = 1 max1 = 1 n = len(s) if n == 0: return s else: while i &lt; n - 1: j = i + 1 while j &lt; n - 1: if s[i] == s[j]: j = j + 1 else: break t=0 while i-t&gt;0 and j&lt;=n-1 : if s[i-1-t] == s[j+t]: t=t+1 else: break if j-i+t*2&gt;max1: max1=j-i ans=s[i:j] i = j return ans 方法二（改进）：对上面的算法进行改进，利用找“核”的思想寻找回文字符串，回文字符串的两个重要“核”：aa和aba类似这样形式的字符串，利用 i=j#这样不用遍历整个字符串 先找到这样的核，再往两边判断是否对称，最后返回索引。 class Solution: def longestPalindrome(self, s): &quot;&quot;&quot; :type s: str :rtype: str &quot;&quot;&quot; i=0 max1=1 n=len(s) ans=s[0] while i&lt;n: j=i+1 while j&lt;n: if s[i]==s[j]: j=j+1 else: break k=0 while i-k&gt;0 and j+k&lt;n: if s[i-k-1]==s[j+k]: k=k+1 else: break length=j-i+2*k if length&gt;max1: max1=length ans=s[i-k:j+k] i=j return ans 比较 第一种方法之所以时间复杂度很大是因为两点： 1：没有利用“核”思想，遍历了整个字符串 2：第一种方法从外往里，而第二种方法是从里往外，更加符合回文字符串的特点，即对称性，节省了很多时间。 我相信还有更好的方法]]></content>
+    <content type="text"><![CDATA[Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.给出一个字符串，找到字符串中最长的回文串，你可以假设字符串的最大长度是1000 Example 1:Input: “babad”Output: “bab”Note: “aba” is also a valid answer.Example 2:Input: “cbbd”Output: “bb” 方法一（差劲）：这是我看到题目的第一想法，相当于遍历了整个字符串，然后当找到和索引i相同的索引j时，再往里面判断是否是对称1234567891011121314151617181920212223242526272829303132class Solution:def longestPalindrome(self, s): """ :type s: str :rtype: str """ i = 0 j = 1 max1 = 1 n = len(s) if n == 0: return s else: while i &lt; n - 1: j = i + 1 while j &lt; n - 1: if s[i] == s[j]: j = j + 1 else: break t=0 while i-t&gt;0 and j&lt;=n-1 : if s[i-1-t] == s[j+t]: t=t+1 else: break if j-i+t*2&gt;max1: max1=j-i ans=s[i:j] i = j return ans 方法二（改进）：对上面的算法进行改进，利用找“核”的思想寻找回文字符串，回文字符串的两个重要“核”：aa和aba类似这样形式的字符串，利用 i=j#这样不用遍历整个字符串 先找到这样的核，再往两边判断是否对称，最后返回索引。 class Solution: def longestPalindrome(self, s): &quot;&quot;&quot; :type s: str :rtype: str &quot;&quot;&quot; i=0 max1=1 n=len(s) ans=s[0] while i&lt;n: j=i+1 while j&lt;n: if s[i]==s[j]: j=j+1 else: break k=0 while i-k&gt;0 and j+k&lt;n: if s[i-k-1]==s[j+k]: k=k+1 else: break length=j-i+2*k if length&gt;max1: max1=length ans=s[i-k:j+k] i=j return ans 比较 第一种方法之所以时间复杂度很大是因为两点： 1：没有利用“核”思想，遍历了整个字符串 2：第一种方法从外往里，而第二种方法是从里往外，更加符合回文字符串的特点，即对称性，节省了很多时间。 我相信还有更好的方法]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
       <tags>
         <tag>算法</tag>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Lujing--Blog]]></title>
+    <url>%2F2018%2F01%2F24%2FLujing-Blog%2F</url>
+    <content type="text"><![CDATA[之前弄过一次博客，后来被我荒废了，主题配置文件还出了错，这次就重新来过。 作为一名研一的工科女生]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
       </tags>
   </entry>
   <entry>
