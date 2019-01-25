@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Given a linked list, remove the n-th node from the end of list and return its head.给定链接列表，从列表末尾删除第n个节点并返回其头部。">
+<meta name="description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)P   A   H   NA P L S I I GY">
 <meta name="keywords" content="c++,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[leetcode]移除链表尾端第n个结点">
-<meta property="og:url" content="https://carolinecomet.github.io/2019/01/25/leetcode-移除链表尾端第n个结点/index.html">
+<meta property="og:title" content="[leetcode]ZigZag">
+<meta property="og:url" content="https://carolinecomet.github.io/2018/10/07/leetcode-ZigZag/index.html">
 <meta property="og:site_name" content="Lujing">
-<meta property="og:description" content="Given a linked list, remove the n-th node from the end of list and return its head.给定链接列表，从列表末尾删除第n个节点并返回其头部。">
+<meta property="og:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)P   A   H   NA P L S I I GY">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-25T02:05:35.400Z">
+<meta property="og:updated_time" content="2019-01-25T02:14:35.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[leetcode]移除链表尾端第n个结点">
-<meta name="twitter:description" content="Given a linked list, remove the n-th node from the end of list and return its head.给定链接列表，从列表末尾删除第n个节点并返回其头部。">
+<meta name="twitter:title" content="[leetcode]ZigZag">
+<meta name="twitter:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)P   A   H   NA P L S I I GY">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://carolinecomet.github.io/2019/01/25/leetcode-移除链表尾端第n个结点/">
+  <link rel="canonical" href="https://carolinecomet.github.io/2018/10/07/leetcode-ZigZag/">
 
 
 
 
 
-  <title>[leetcode]移除链表尾端第n个结点 | Lujing</title>
+  <title>[leetcode]ZigZag | Lujing</title>
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2019/01/25/leetcode-移除链表尾端第n个结点/">
+    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2018/10/07/leetcode-ZigZag/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lujing">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[leetcode]移除链表尾端第n个结点</h1>
+          <h1 class="post-title" itemprop="name headline">[leetcode]ZigZag</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T09:57:10+08:00">
-                2019-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T14:09:38+08:00">
+                2018-10-07
               </time>
             
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  226
+                  489
                 </span>
               
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -412,9 +412,15 @@
       
 
       
-        <p></p><p class="description"></p><br>Given a linked list, remove the n-th node from the end of list and return its head.<br>给定链接列表，从列表末尾删除第n个节点并返回其头部。<br><a id="more"></a><p></p>
-<h1 id="一-c-代码"><a href="#一-c-代码" class="headerlink" title="一.c++代码"></a>一.c++代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span>  <span class="built_in">std</span>; </span><br><span class="line">    <span class="comment">//Definition for singly-linked list.</span></span><br><span class="line">     <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">         ListNode *next;</span><br><span class="line">         ListNode(<span class="keyword">int</span> x) : val(x), next(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">     &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> length1=<span class="number">1</span>;</span><br><span class="line">            ListNode* p = head;</span><br><span class="line">            ListNode* q = head;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;next)</span><br><span class="line">		&#123;</span><br><span class="line">			length1++;</span><br><span class="line">			p = p-&gt;next;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> cha = length1 - n;</span><br><span class="line">		<span class="comment">//if (length1 == 1)</span></span><br><span class="line">		<span class="comment">//	return NULL;</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (length1 &lt;= n)</span><br><span class="line">			head = head-&gt;next;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (cha - <span class="number">1</span>); i++)</span><br><span class="line">			&#123;</span><br><span class="line">				q = q-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			ListNode *t = q-&gt;next;</span><br><span class="line">			q-&gt;next = t-&gt;next;</span><br><span class="line">			<span class="keyword">delete</span> t;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> head; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*Solution *s;*/</span></span><br><span class="line">	ListNode* l1 = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">	ListNode *l11 = l1;</span><br><span class="line">	l11-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">	l11 = l11-&gt;next;</span><br><span class="line">	l11-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line">	l11 = l11-&gt;next;</span><br><span class="line">	l11-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">4</span>);</span><br><span class="line">	l11 = l11-&gt;next;</span><br><span class="line">	l11-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">5</span>);</span><br><span class="line">	Solution* s = <span class="keyword">new</span> Solution;</span><br><span class="line">	s-&gt;removeNthFromEnd(l1, <span class="number">1</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p></p><p class="description"></p><br>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br>P   A   H   N<br>A P L S I I G<br>Y   I   R<br>And then read line by line: “PAHNAPLSIIGYIR”<p></p>
+<p>Write the code that will take a string and make this conversion given a number of rows<br>字符串“PAYPALISHIRING”以Z字形图案写在给定数量的行上，如下所示:(您可能希望以固定字体显示此图案以获得更好的易读性）<br>然后逐行阅读：“PAHNAPLSIIGYIR”</p>
+<p>编写将采用字符串的代码并在给定多行的情况下进行此转换<br><a id="more"></a></p>
+<h1 id="c-代码"><a href="#c-代码" class="headerlink" title="c++代码"></a>c++代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> length_s = s.length();</span><br><span class="line">            <span class="keyword">int</span> num_z = (numRows * <span class="number">2</span>  - <span class="number">2</span>);<span class="comment">//一个完整的z的字符个数</span></span><br><span class="line">		<span class="keyword">if</span> (numRows == <span class="number">1</span>)</span><br><span class="line">			<span class="keyword">return</span> s;</span><br><span class="line">            <span class="built_in">string</span> ren;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j +i&lt; length_s; j = j + num_z) &#123;</span><br><span class="line">                    ren =ren+ s[i + j];</span><br><span class="line">                    <span class="keyword">if</span> (i != <span class="number">0</span> &amp;&amp; i != numRows - <span class="number">1</span>&amp;&amp;num_z-i+j&lt;length_s)</span><br><span class="line">                        ren = ren+s[num_z - i + j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ren;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Solution s;</span><br><span class="line">        s.convert(<span class="string">"PAYPALISHIRING"</span>,<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>一个字符串以另外一种形式返回。找到返回字符串的规律</p>
+<p>Z的规律：首先看原字符串的长度，再看每个Z需要多少个字符串；</p>
+<p>在每一行中再循环每一个Z，循环每个Z的时候，要注意两个边界<br><br>第一个：是j循环的条件，每行的首个字母的索引是i+j，因此循环每个j的时候，要保证索引小于总长度<br><br>第二个：除了首末两行，其余的行每个Z都要返回两个字符串，找到这两个字符串的关系，即第二个字符串索引为Z字符个数-i+j，也要保证这个索引小于总长度</p>
+<p>有了这两个边界保证，就不需要去考虑完整Z和不完整Z，完全利用索引去和长度的大小去判断字符串。</p>
+
       
     </div>
     
@@ -455,6 +461,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/12/leetcode-生成括号/" rel="prev" title="[leetcode]生成括号">
+                [leetcode]生成括号 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -559,7 +569,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -570,7 +580,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -650,7 +660,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-c-代码"><span class="nav-number">1.</span> <span class="nav-text">一.c++代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试结果"><span class="nav-number">1.1.</span> <span class="nav-text">测试结果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c-代码"><span class="nav-number">1.</span> <span class="nav-text">c++代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.1.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -684,7 +694,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2k</span>
+    <span title="Site words total count">5.1k</span>
   
  -->
 </div>
@@ -716,7 +726,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共2k字</span>
+  <span class="post-count">博客全站共5.1k字</span>
 </div>
         
 

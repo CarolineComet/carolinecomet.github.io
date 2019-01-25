@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[[leetcode]移除链表尾端第n个结点]]></title>
-    <url>%2F2019%2F01%2F25%2Fleetcode-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%B0%BE%E7%AB%AF%E7%AC%ACn%E4%B8%AA%E7%BB%93%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[Given a linked list, remove the n-th node from the end of list and return its head.给定链接列表，从列表末尾删除第n个节点并返回其头部。 一.c++代码1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt; using namespace std; //Definition for singly-linked list. struct ListNode &#123; int val; ListNode *next; ListNode(int x) : val(x), next(NULL) &#123;&#125; &#125;; class Solution &#123; public: ListNode* removeNthFromEnd(ListNode* head, int n) &#123; int length1=1; ListNode* p = head; ListNode* q = head; while (p-&gt;next) &#123; length1++; p = p-&gt;next; &#125; int cha = length1 - n; //if (length1 == 1) // return NULL; if (length1 &lt;= n) head = head-&gt;next; else &#123; for (int i = 0; i &lt; (cha - 1); i++) &#123; q = q-&gt;next; &#125; ListNode *t = q-&gt;next; q-&gt;next = t-&gt;next; delete t; &#125; return head; &#125;&#125;; 测试结果1234567891011121314151617int main() &#123; /*Solution *s;*/ ListNode* l1 = new ListNode(1); ListNode *l11 = l1; l11-&gt;next = new ListNode(2); l11 = l11-&gt;next; l11-&gt;next = new ListNode(3); l11 = l11-&gt;next; l11-&gt;next = new ListNode(4); l11 = l11-&gt;next; l11-&gt;next = new ListNode(5); Solution* s = new Solution; s-&gt;removeNthFromEnd(l1, 1); system("pause"); return 0;&#125;]]></content>
+    <title><![CDATA[[牛客网]等差数列]]></title>
+    <url>%2F2019%2F10%2F19%2Fleetcode-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%2F</url>
+    <content type="text"><![CDATA[如果一个数列S满足对于所有的合法的i,都有S[i + 1] = S[i] + d, 这里的d也可以是负数和零,我们就称数列S为等差数列。小易现在有一个长度为n的数列x,小易想把x变为一个等差数列。小易允许在数列上做交换任意两个位置的数值的操作,并且交换操作允许交换多次。但是有些数列通过交换还是不能变成等差数列,小易需要判别一个数列是否能通过交换操作变成等差数列 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include&lt;iostream&gt;using namespace std; class Solution&#123;public: void Dengcha() &#123; int n; int d; int sum=0; cin&gt;&gt;n; int *a=new int[n]; for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i]; for(int i=0;i&lt;n;i++) &#123; for(int j=n-2;j&gt;=i;j--) &#123; if (a[j]&gt;a[j+1]) &#123; int temp=a[j]; a[j]=a[j+1]; a[j+1]=temp; &#125; &#125; &#125; d=a[1]-a[0]; for(int i=1;i&lt;n;i++) &#123; if( a[i]+d==a[i+1]) sum++; &#125; if (sum==n-2) cout&lt;&lt;"Possible"&lt;&lt;endl; else cout&lt;&lt;"Impossible"&lt;&lt;endl; &#125; &#125;;int main()&#123; Solution s; s.Dengcha(); &#125; 算法首先对数列中的数进行排序，然后算出前两个数的差，即假定为方差，然后再对每个数检验。 改进其中排序算法可以用sort函数代替1sort(a,a+n); 但是要引入 algorithm的头文件。]]></content>
+      <categories>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]继承]]></title>
+    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]拷贝构造和重载]]></title>
+    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E9%87%8D%E8%BD%BD%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]初始化和重载]]></title>
+    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%87%8D%E8%BD%BD%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]指针和引用]]></title>
+    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[[牛客网]字符移位]]></title>
+    <url>%2F2019%2F01%2F25%2Fleetcode-%E5%AD%97%E7%AC%A6%E7%A7%BB%E4%BD%8D%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[牛客网]彩色砖块]]></title>
+    <url>%2F2018%2F10%2F18%2Fleetcode-%E5%BD%A9%E8%89%B2%E7%A0%96%E5%9D%97%2F</url>
+    <content type="text"><![CDATA[小易有一些彩色的砖块。每种颜色由一个大写字母表示。各个颜色砖块看起来都完全一样。现在有一个给定的字符串s,s中每个字符代表小易的某个砖块的颜色。小易想把他所有的砖块排成一行。如果最多存在一对不同颜色的相邻砖块,那么这行砖块就很漂亮的。请你帮助小易计算有多少种方式将他所有砖块排成漂亮的一行。(如果两种方式所对应的砖块颜色序列是相同的,那么认为这两种方式是一样的。) examples = “ABAB”,那么小易有六种排列的结果:“AABB”,”ABAB”,”ABBA”,”BAAB”,”BABA”,”BBAA”其中只有”AABB”和”BBAA”满足最多只有一对不同颜色的相邻砖块 代码1234567891011121314151617181920212223242526272829303132333435363738#include &lt;iostream&gt;using namespace std;class Solution&#123;public: void Colour() &#123; string s; cin&gt;&gt;s; string a,b,c; int n=0; int len=s.length(); b=s[0]; for(int i=0;i&lt;len;i++) &#123; a=s[i]; if(a!=b) n=n+1; if (n==2) &#123; if (s[i]==s[i-2]) n=1; else cout&lt;&lt;0&lt;&lt;endl; return ; &#125; b=a; &#125; cout&lt;&lt;n+1&lt;&lt;endl; &#125;&#125;;int main()&#123; Solution ss; ss.Colour();&#125; 改进方法12345678910111213141516#include &lt;iostream&gt; using namespace std; int main() &#123; int a[27] = &#123; 0 &#125;, c, sum = 0; while((c=getchar())&gt;32) if (!a[c - 65]) &#123; sum++; a[c - 65] = 1; &#125; if (sum &gt; 2) cout &lt;&lt; 0; else cout &lt;&lt; sum; &#125; 算法26个大写英文字母A~Z的ASCII码值是65～90 getchar()函数该函数以无符号 char 强制转换为 int 的形式返回读取的字符，如果到达文件末尾或发生读错误，则返回 EOF。]]></content>
+      <categories>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[牛客网]最大乘积]]></title>
+    <url>%2F2018%2F10%2F15%2Fleetcode-%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF%2F</url>
+    <content type="text"><![CDATA[给定一个无序数组，包含正数、负数和0，要求从中找出3个数的乘积，使得乘积最大，要求时间复杂度：O(n)，空间复杂度：O(1) 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455 class Solution &#123;public:void FindMax()&#123; int n; long result; cin &gt;&gt; n; int *a=new int[n];//用指针a指向NEW动态分配的长度N的内存空间 long long max = 1; long long max_sec = 1; long long max_third = 1; long long min = 1; long long min_sec = 1; if (n&lt;3) return ; for (int i = 0; i &lt; n; i++) &#123; cin &gt;&gt; a[i]; if (a[i] &gt; max) &#123; max_third = max_sec; max_sec = max; max = a[i]; &#125; else if (a[i] &gt; max_sec) &#123; max_third = max_sec; max_sec = a[i]; &#125; else if (a[i] &gt; max_third) &#123; max_third = a[i]; &#125; else if (a[i] &lt; min) &#123; min_sec = min; min = a[i]; &#125; else if (a[i] &lt; min_sec) min_sec = a[i]; long max1 = max * max_sec*max_third; long max2 = max * min*min_sec; if (max1 &gt;= max2) result = max1; else result = max2; &#125; cout&lt;&lt;result&lt;&lt;endl;&#125; &#125;; int main() &#123; Solution s; s.FindMax(); &#125; 算法：因为要求时间复杂度是N，所以只能有循环。当数组大小小于3的时候，直接返回。 最大乘积只有两种可能：1:三个最大正数相乘2：一个最大正数和两个最小负数所以在循环的时候只要找到这五个数。初始化的时候这五个数可以都初始化为1，在循环中，不断改变它们的值。最后将两种情况比较，输出最大值。 易错点：关于数据的溢出，第一次写的时候把所有的数据类型都定义成int型，但是通过率只有22%，这里没有规定数据大小，所以要注意溢出的问题 疑问n=3的情况怎么判断？如果是一个负数两个正数，输出的是什么？代码直接判断了两个正数相乘输出没有报错通过了？ int ,long , long long类型的范围unsigned int 0～4294967295int -2147483648～2147483647unsigned long 0～4294967295long -2147483648～2147483647long long的最大值：9223372036854775807long long的最值：-9223372036854775808unsigned long long的最大值：18446744073709551615 int64的最大值：9223372036854775807 int64的最小值：-9223372036854775808unsigned __int64的最大值：18446744073709551615 32位下，shrot int long分别是2字节，4字节，4字节，longlong是8字节；64位下，long8字节 int是4字节，longlong 8字节。 int是4字节的，一个字节代表8位二进制，所以int的数据类型是32位。所以可以表示2的32次幂的位数，但是数有正有负，所以是-2的32/2=2的31次到2的31次-1]]></content>
+      <categories>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[leetcode]生成括号]]></title>
+    <url>%2F2018%2F10%2F12%2Fleetcode-%E7%94%9F%E6%88%90%E6%8B%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.给定n对括号，编写一个函数来生成格式正确的括号的所有组合。 exampleFor example, given n = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()(())”, “()()()”] c++代码 对于这种列出所有结果的题首先还是考虑用递归来解123456789101112131415161718192021222324252627282930#include &lt;vector&gt; #include &lt;iostream&gt; using namespace std; class Solution &#123; public: vector&lt;string&gt; generateParenthesis(int n) &#123; vector&lt;string&gt; paren; backtrack("", paren, n, n); return paren;&#125;void backtrack(string out, vector&lt;string&gt; &amp;paren,int left , int right )&#123; if (left &gt; right) return; if (left==0 &amp;&amp; right==0) paren.push_back(out); else &#123; if (left &gt; 0) backtrack(out + "(", paren, left - 1, right); if (right &gt; 0) backtrack(out + ")", paren, left, right - 1); &#125;&#125; &#125;; int main() &#123; Solution s; s.generateParenthesis(3); &#125; 算法左括号3个，右括号3个，所以我们定义两个变量left和right分别表示剩余左右括号的个数，如果在某次递归时，左括号的个数大于右括号的个数，说明此时生成的字符串中右括号的个数大于左括号的个数，即会出现’)(‘这样的非法串，所以这种情况直接返回，不继续处理。如果left和right都为0，则说明此时生成的字符串已有3个左括号和3个右括号，且字符串合法，则存入结果中后返回。如果以上两种情况都不满足，若此时left大于0，则调用递归函数，注意参数的更新，若right大于0，则调用递归函数，同样要更新参数。 注意分成两个函数来写，因为最终要返回的事一个字符串，但是在迭代过程中，需要范围True或False，所以最好分两个函数，一个函数完成总的框架，范围要的结果，定义迭代的函数。另一个函数就是迭代函数的具体声明。 在声明函数backtrack时，容器paren要用引用，否则，每次退出一个递归，paren里的值将恢复最初的值，无法累计。]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[leetcode]ZigZag]]></title>
+    <url>%2F2018%2F10%2F07%2Fleetcode-ZigZag%2F</url>
+    <content type="text"><![CDATA[The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)P A H NA P L S I I GY I RAnd then read line by line: “PAHNAPLSIIGYIR” Write the code that will take a string and make this conversion given a number of rows字符串“PAYPALISHIRING”以Z字形图案写在给定数量的行上，如下所示:(您可能希望以固定字体显示此图案以获得更好的易读性）然后逐行阅读：“PAHNAPLSIIGYIR” 编写将采用字符串的代码并在给定多行的情况下进行此转换 c++代码12345678910111213141516171819202122232425#include&lt;iostream&gt; using namespace std; class Solution &#123; public: string convert(string s, int numRows) &#123; int length_s = s.length(); int num_z = (numRows * 2 - 2);//一个完整的z的字符个数 if (numRows == 1) return s; string ren; for (int i = 0; i &lt; numRows; i++) &#123; for (int j = 0; j +i&lt; length_s; j = j + num_z) &#123; ren =ren+ s[i + j]; if (i != 0 &amp;&amp; i != numRows - 1&amp;&amp;num_z-i+j&lt;length_s) ren = ren+s[num_z - i + j]; &#125; &#125; return ren; &#125; &#125;; int main() &#123; Solution s; s.convert("PAYPALISHIRING",3); &#125; 算法一个字符串以另外一种形式返回。找到返回字符串的规律 Z的规律：首先看原字符串的长度，再看每个Z需要多少个字符串； 在每一行中再循环每一个Z，循环每个Z的时候，要注意两个边界第一个：是j循环的条件，每行的首个字母的索引是i+j，因此循环每个j的时候，要保证索引小于总长度第二个：除了首末两行，其余的行每个Z都要返回两个字符串，找到这两个字符串的关系，即第二个字符串索引为Z字符个数-i+j，也要保证这个索引小于总长度 有了这两个边界保证，就不需要去考虑完整Z和不完整Z，完全利用索引去和长度的大小去判断字符串。]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -22,6 +102,18 @@
       <tags>
         <tag>算法</tag>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[leetcode]移除链表尾端第n个结点]]></title>
+    <url>%2F2018%2F09%2F25%2Fleetcode-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%B0%BE%E7%AB%AF%E7%AC%ACn%E4%B8%AA%E7%BB%93%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[Given a linked list, remove the n-th node from the end of list and return its head.给定链接列表，从列表末尾删除第n个节点并返回其头部。 一.c++代码1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt; using namespace std; //Definition for singly-linked list. struct ListNode &#123; int val; ListNode *next; ListNode(int x) : val(x), next(NULL) &#123;&#125; &#125;; class Solution &#123; public: ListNode* removeNthFromEnd(ListNode* head, int n) &#123; int length1=1; ListNode* p = head; ListNode* q = head; while (p-&gt;next) &#123; length1++; p = p-&gt;next; &#125; int cha = length1 - n; //if (length1 == 1) // return NULL; if (length1 &lt;= n) head = head-&gt;next; else &#123; for (int i = 0; i &lt; (cha - 1); i++) &#123; q = q-&gt;next; &#125; ListNode *t = q-&gt;next; q-&gt;next = t-&gt;next; delete t; &#125; return head; &#125;&#125;; 测试结果1234567891011121314151617int main() &#123; /*Solution *s;*/ ListNode* l1 = new ListNode(1); ListNode *l11 = l1; l11-&gt;next = new ListNode(2); l11 = l11-&gt;next; l11-&gt;next = new ListNode(3); l11 = l11-&gt;next; l11-&gt;next = new ListNode(4); l11 = l11-&gt;next; l11-&gt;next = new ListNode(5); Solution* s = new Solution; s-&gt;removeNthFromEnd(l1, 1); system("pause"); return 0;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -58,6 +150,28 @@
       <tags>
         <tag>c++</tag>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]一些函数]]></title>
+    <url>%2F2018%2F05%2F26%2FC-%E5%9F%BA%E7%A1%80-%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[析构函数，构造函数，友元和接口函数等 析构函数1~CStu（）//只有一个，不能重载，不能有参数 对象声明周期结束时，自动调用后括号}或者碰到return构造函数是遇到声明语句马上调用12345678 &#123; CStu stu;//执行到这一步，直接调用构造函数 &#125;//执行到这一步，调用析构函数或者return``` 指针对象遇到delete才调用析构函数```cpp Cstu* stu = new CStu; delete stu; 临时对象,作用鱼仅限这一行代码，创建完直接调用析构函数123456789101112 CStu(12)//在内部是创建了一个对象 CStu tu(12)``` **malloc free和 new delete区别**&lt;br&gt;## tihs 指针this指针创建对象时才有（不是成员）&lt;br&gt;当局部变量和外部变量同名```cpp int a; CStu(int a) &#123; this-&gt;a=a &#125; 是成员函数的隐含参数1234567CStu* GetAddr()&#123; return this&#125;//main函数：CStu* p=st.GetAddr()cout&lt;&lt;p&lt;&lt;endl st对象包含对象地址]]></content>
+      <categories>
+        <category>c++基础</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]结构体和类]]></title>
+    <url>%2F2018%2F05%2F25%2FC-%E7%BB%93%E6%9E%84%E4%BD%93%2F</url>
+    <content type="text"><![CDATA[一些基础知识点，结构体和类理论 基础知识点主函数：应用程序入口一个项目只能有一个主函数 主函数形式1:int main()c++标准形式2:int main(void) c标准形式3:int main(int argc,char* argv[ ]) 命令行参数4:main() c5:void main() (不提倡) 输出 输入cout可以连续输出，自动识别类型&lt;&lt;’a’&lt;&lt;21&lt;&lt;”dddd”“” 字符串‘’字符小数自动识别成double，所以定义浮点数时，要在最后加ffloat b=12.122f endl换行，并且清空刷新缓冲区\n换行符依旧可以用 c结构体结构体中不能直接有函数成员，但可以通过一定的语法间接调用函数，比如函数指针声明结构体变量必须有struct关键字123456789101112131415161718#include &lt;stdio.h&gt;typedef struct Node&#123; int m; void(*p)();//函数指针&#125;;void fun()&#123; printf("hello");&#125;int main(void)&#123; struct Node a = &#123; 1,fun &#125;; a.p();//调用函数 return 0;&#125;; 在C中定义一个结构体类型要用typedef: 1234typedef struct Student &#123; int a; &#125;Stu; 于是在声明变量的时候就可：Stu stu1;(如果没有typedef就必须用struct Student stu1;来声明)这里的Stu实际上就是struct Student的别名。Stu==struct Student1234typedef struct&#123;int a;&#125;Stu; 另外这里也可以不写Student（于是也不能struct Student stu1;了，必须是Stu stu1;） c++ 结构体在c++中如果用typedef的话，又会造成区别：1234struct Student &#123; int a; &#125;stu1;//stu1是一个变量 1234typedef struct Student2 &#123; int a; &#125;stu2;//stu2是一个结构体类型=struct Studen 声明变量不用struct可以放函数成员12345678910111213141516171819202122#include &lt;iostream&gt;using namespace std;struct Node&#123; int m; void fun() &#123; printf("hello"); &#125;&#125;;int main() &#123; Node a; a.fun(); system("pause"); return 0;&#125;;]]></content>
+      <categories>
+        <category>c++基础</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
