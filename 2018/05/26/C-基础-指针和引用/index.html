@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="c++,">
 
 
 
@@ -86,14 +86,26 @@
 
 
 
+<meta name="description" content="指针，引用，引用变量，引用做参数和返回值，指针和引用的区别">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C++基础]初始化和重载">
-<meta property="og:url" content="https://carolinecomet.github.io/2019/01/25/C-基础-初始化和重载/index.html">
+<meta property="og:title" content="[C++基础]指针和引用">
+<meta property="og:url" content="https://carolinecomet.github.io/2018/05/26/C-基础-指针和引用/index.html">
 <meta property="og:site_name" content="Lujing">
+<meta property="og:description" content="指针，引用，引用变量，引用做参数和返回值，指针和引用的区别">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-25T02:46:21.734Z">
+<meta property="og:image" content="f:/YJS/C++/变量.jpg">
+<meta property="og:image" content="f:/YJS/C++/指针.jpg">
+<meta property="og:image" content="f:/YJS/C++/指针1.jpg">
+<meta property="og:image" content="f:/YJS/C++/指针.jpg">
+<meta property="og:image" content="f:/YJS/C++/指针.jpg">
+<meta property="og:image" content="f:/YJS/C++/指针1.jpg">
+<meta property="og:image" content="f:/YJS/C++/指针.jpg">
+<meta property="og:updated_time" content="2019-01-25T03:22:31.547Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[C++基础]初始化和重载">
+<meta name="twitter:title" content="[C++基础]指针和引用">
+<meta name="twitter:description" content="指针，引用，引用变量，引用做参数和返回值，指针和引用的区别">
+<meta name="twitter:image" content="f:/YJS/C++/变量.jpg">
 
 
 
@@ -123,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://carolinecomet.github.io/2019/01/25/C-基础-初始化和重载/">
+  <link rel="canonical" href="https://carolinecomet.github.io/2018/05/26/C-基础-指针和引用/">
 
 
 
 
 
-  <title>[C++基础]初始化和重载 | Lujing</title>
+  <title>[C++基础]指针和引用 | Lujing</title>
   
 
 
@@ -288,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2019/01/25/C-基础-初始化和重载/">
+    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2018/05/26/C-基础-指针和引用/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lujing">
@@ -305,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[C++基础]初始化和重载</h1>
+          <h1 class="post-title" itemprop="name headline">[C++基础]指针和引用</h1>
         
 
         <div class="post-meta">
@@ -317,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T10:46:21+08:00">
-                2019-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T09:05:33+08:00">
+                2018-05-26
               </time>
             
 
@@ -327,6 +339,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/c-基础/" itemprop="url" rel="index">
+                    <span itemprop="name">c++基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -349,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.4k
                 </span>
               
 
@@ -365,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -386,7 +420,158 @@
       
 
       
-        
+        <p></p><p class="description"></p><br>指针，引用，引用变量，引用做参数和返回值，指针和引用的区别<br><a id="more"></a><p></p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>申请指针空间<br>申请单个空间的时候，可以直接初始化<br><br>但是申请数组时，可以使用memset赋值<br></p>
+<h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><p>释放指针<br><br>在释放数组时，要加方括号</p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+
+////申请单个空间
+//int *p = new int;//new+type 类型匹配上 也可以直接初始化 new int(12)
+//int *p1=malloc(sizeof(int));c语言！
+//char *p = new char;
+//*p = 12;//写
+//cout &lt;&lt; *p &lt;&lt; endl;//读
+//delete p;//释放
+//申请数组
+int *p = new int[5];
+memset(p,0,5*4)//赋值数组，5个值，每个int占4个字节，总共20个字节
+//int *p1 = malloc(5 * 4); c语言
+p[0] = 12;
+p[1] = 11;
+cout &lt;&lt; p[0] &lt;&lt; &quot;  &quot; &lt;&lt; p[1] &lt;&lt; endl;
+system(&quot;pause&quot;);
+delete[]p;//释放数组P 要方括号
+return 0;
+</code></pre><p>}</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="*作用"></a>*作用</h2><p>1 在申明一个变量的时候，*指针变量<br><br>2 地址操作符 读写<br><br>3 数字 表示乘法</p>
+<h2 id="对内存的操作"><a href="#对内存的操作" class="headerlink" title="对内存的操作"></a>对内存的操作</h2><p>读 写 取地址&amp;</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>给变量取别名</p>
+<pre><code>int a=12;
+int &amp;c=a;//声明变量a的一个引用c，c时变量a的一个别名
+c=13//a的值也改变了 
+</code></pre><p>引用的时候一定要初始化<br><br>可以被多个变量引用<br><br>与赋值概念不同</p>
+<h1 id="指针-1"><a href="#指针-1" class="headerlink" title="指针"></a>指针</h1><p>这个和指针不同</p>
+<pre><code>*p=&amp;a;
+</code></pre><p> p指向的是a的地址，而不是a本身<br><br> 但是取别名的话，直接关联本身<br><img src="F:\YJS\C++\变量.jpg" alt="avatar"></p>
+<h1 id="其他类型的引用"><a href="#其他类型的引用" class="headerlink" title="其他类型的引用"></a>其他类型的引用</h1><h2 id="常量的引用"><a href="#常量的引用" class="headerlink" title="常量的引用"></a>常量的引用</h2><pre><code>const int&amp; a = 12;
+</code></pre><p>不可以修改a的值，只能读</p>
+<h2 id="数组的引用"><a href="#数组的引用" class="headerlink" title="数组的引用"></a>数组的引用</h2><p>1 一维数组：</p>
+<pre><code>int ar[12];
+int (&amp;p)[12]=ar;//引用 类型
+</code></pre><p> 2 二维数组</p>
+<pre><code>int arr[2][3];
+int (&amp;p)[2][3]=arr;
+</code></pre><h2 id="指针的引用"><a href="#指针的引用" class="headerlink" title="指针的引用"></a>指针的引用</h2><pre><code>int b=12;
+int *p=&amp;b;
+int *(&amp;p1)=p;
+</code></pre><h1 id="引用做参数"><a href="#引用做参数" class="headerlink" title="引用做参数"></a>引用做参数</h1><pre><code>void fun(int&amp; a)
+{
+    a=13;
+    count&lt;&lt;a&lt;&lt;endl;
+}
+void fun1(int a)
+{
+    a=14;
+    coutn&lt;&lt;a&lt;&lt;endl;
+}
+void fun2(int* a)
+{
+    *a=15;
+}
+int main()
+{
+    int b=12;
+    fun(b);
+    fun1(b);
+    fun2(&amp;b);
+    return 0;
+
+}
+</code></pre><p>1.调用fun函数时，a初始化成b,a和b关联同一个空间,在函数fun里给a赋值，调用时，b的值也改变成和a一样<br><br><img src="F:\YJS\C++\指针.jpg" alt="avatar"></p>
+<p>2.调用fun1函数时，把b赋值给了a，给a的空间传递了一个b的值，fun1函数里面a赋值，并不会改变b<br><br><img src="F:\YJS\C++\指针1.jpg" alt="avatar"></p>
+<p>3.c语言中，通过调用指针改变外部的值,如图：<img src="F:\YJS\C++\指针.jpg" alt="avatar"></p>
+<h2 id="（引用）交换两个变量的值"><a href="#（引用）交换两个变量的值" class="headerlink" title="（引用）交换两个变量的值"></a>（引用）交换两个变量的值</h2><pre><code>void exchange(int&amp; a,int&amp; b)
+{
+int temp=a;
+a=b;
+b=temp;
+}
+</code></pre><p>不引用直接传入无法改变<br></p>
+<p>指针传入也可以改变两个变量的值</p>
+<pre><code>void exchange(int*a,int*b)
+{
+int *temp=*a;
+*a=*b;
+*b=*temp;
+}
+</code></pre><h1 id="引用做返回值"><a href="#引用做返回值" class="headerlink" title="引用做返回值"></a>引用做返回值</h1><pre><code>int&amp; fun()
+{
+    int a=12;
+    return a;
+}
+int main()
+{
+    int&amp; b=fun();
+    cout&lt;&lt;b&lt;&lt;endl;
+    system(&quot;pause&quot;);
+    return 0;
+}
+</code></pre><p>  <strong>第九行调用了局部变量后，a的内容空间销毁，第十行是非法空间操作！！不要引用局部变量</strong><br><br>  引用不占存储空间，指针占空间<br><br>  &amp;作用：<br><br>  1.变量前加 做引用<br><br>  2.取地址<br><br>  3.与运算</p>
+<h1 id="引用做参数-1"><a href="#引用做参数-1" class="headerlink" title="引用做参数"></a>引用做参数</h1><pre><code>void fun(int&amp; a)
+{
+    a=13;
+    count&lt;&lt;a&lt;&lt;endl;
+}
+void fun1(int a)
+{
+    a=14;
+    coutn&lt;&lt;a&lt;&lt;endl;
+}
+void fun2(int* a)
+{
+*a=15;
+}
+int main()
+{
+    int b=12;
+    fun(b);
+    fun1(b);
+    fun2(&amp;b);
+    return 0;
+
+}
+</code></pre><p>1.调用fun函数时，a初始化成b,a和b关联同一个空间,在函数fun里给a赋值，调用时，b的值也改变成和a一样<br><br><img src="F:\YJS\C++\指针.jpg" alt="avatar"></p>
+<p>2.调用fun1函数时，把b赋值给了a，给a的空间传递了一个b的值，fun1函数里面a赋值，并不会改变b<br><br><img src="F:\YJS\C++\指针1.jpg" alt="avatar"></p>
+<p>3.c语言中，通过调用指针改变外部的值,如图：<img src="F:\YJS\C++\指针.jpg" alt="avatar"></p>
+<h1 id="（引用）交换两个变量的值-1"><a href="#（引用）交换两个变量的值-1" class="headerlink" title="（引用）交换两个变量的值"></a>（引用）交换两个变量的值</h1><pre><code>void exchange(int&amp; a,int&amp; b)
+{
+int temp=a;
+a=b;
+b=temp;
+}
+</code></pre><p>不引用直接传入无法改变<br></p>
+<p>指针传入也可以改变两个变量的值</p>
+<pre><code>void exchange(int*a,int*b)
+{
+int *temp=*a;
+*a=*b;
+*b=*temp;
+}
+</code></pre><h1 id="引用-1"><a href="#引用-1" class="headerlink" title="引用"></a>引用</h1><p>引用只是别名，不是实体类型（也就是说c++编译器不为引用单独分配内存空间），对一个对象的引用，就是直接对这个对象的操作。</p>
+<p>（1）引用必须初始化(引用必须指向所引用的对象)<br></p>
+<pre><code>int a = 3;&lt;br&gt;
+int&amp; ra = a;&lt;br&gt;
+int &amp;b ;//错误，引用必须初始化
+</code></pre><p> (3)引用不能更换目标</p>
+<pre><code>   int&amp; ra = a;
+// int&amp; ra = b;//错误，多次初始化
+</code></pre><h2 id="引用的使用场合？"><a href="#引用的使用场合？" class="headerlink" title="引用的使用场合？"></a>引用的使用场合？</h2><p>（一）引用型参数（函数形参只是实参的别名，也就是说形参和实参是同一个对象）<br><br>使用引用型参数有两个好处：<br><br>（1）因为函数形参和实参是同一个对象，也就不存在对象复制，避免了对象的开销。<br>（2）可以在修改形参的同时对实参的修改。<br><br>因为不存在拷贝构造所以，可以提高c++程序的执行效率</p>
+<p>（2）引用型返回值 <br><br>从函数中返回引用，一定要保证在函数返回以后，被引用的目标一直有效，也就是不能返回函数体内的局部对象的引用，局部对象离开作用域就会被析构掉，所以不能返回对函数体内的局部对象的引用。</p>
+<h1 id="区别和联系"><a href="#区别和联系" class="headerlink" title="区别和联系"></a>区别和联系</h1><p>指针可以不初始化，可以改变它指向的目标。</p>
+
       
     </div>
     
@@ -401,6 +586,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+          
+        </div>
+      
 
       
       
@@ -410,8 +601,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/25/C-基础-指针和引用/" rel="next" title="[C++基础]指针和引用">
-                <i class="fa fa-chevron-left"></i> [C++基础]指针和引用
+              <a href="/2018/05/25/C-结构体/" rel="next" title="[C++基础]结构体和类">
+                <i class="fa fa-chevron-left"></i> [C++基础]结构体和类
               </a>
             
           </div>
@@ -420,8 +611,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/25/C-基础-拷贝构造和重载/" rel="prev" title="[C++基础]拷贝构造和重载">
-                [C++基础]拷贝构造和重载 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/26/C-基础-一些函数/" rel="prev" title="[C++基础]一些函数">
+                [C++基础]一些函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,8 +691,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -600,6 +800,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#指针"><span class="nav-number">1.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">1.1.</span> <span class="nav-text">new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete"><span class="nav-number">1.2.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.3.</span> <span class="nav-text">*作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对内存的操作"><span class="nav-number">1.4.</span> <span class="nav-text">对内存的操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指针-1"><span class="nav-number">3.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他类型的引用"><span class="nav-number">4.</span> <span class="nav-text">其他类型的引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常量的引用"><span class="nav-number">4.1.</span> <span class="nav-text">常量的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的引用"><span class="nav-number">4.2.</span> <span class="nav-text">数组的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针的引用"><span class="nav-number">4.3.</span> <span class="nav-text">指针的引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用做参数"><span class="nav-number">5.</span> <span class="nav-text">引用做参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（引用）交换两个变量的值"><span class="nav-number">5.1.</span> <span class="nav-text">（引用）交换两个变量的值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用做返回值"><span class="nav-number">6.</span> <span class="nav-text">引用做返回值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用做参数-1"><span class="nav-number">7.</span> <span class="nav-text">引用做参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#（引用）交换两个变量的值-1"><span class="nav-number">8.</span> <span class="nav-text">（引用）交换两个变量的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用-1"><span class="nav-number">9.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用的使用场合？"><span class="nav-number">9.1.</span> <span class="nav-text">引用的使用场合？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#区别和联系"><span class="nav-number">10.</span> <span class="nav-text">区别和联系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -627,7 +843,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.1k</span>
+    <span title="Site words total count">9.8k</span>
   
  -->
 </div>
@@ -659,7 +875,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.1k字</span>
+  <span class="post-count">博客全站共9.8k字</span>
 </div>
         
 

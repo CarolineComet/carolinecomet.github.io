@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="c++,">
 
 
 
@@ -86,14 +86,18 @@
 
 
 
+<meta name="description" content="函数重载和默认参数，拷贝构造，符号重载">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[C++基础]拷贝构造和重载">
-<meta property="og:url" content="https://carolinecomet.github.io/2019/01/25/C-基础-拷贝构造和重载/index.html">
+<meta property="og:url" content="https://carolinecomet.github.io/2018/05/27/C-基础-拷贝构造和重载/index.html">
 <meta property="og:site_name" content="Lujing">
+<meta property="og:description" content="函数重载和默认参数，拷贝构造，符号重载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-25T02:46:44.640Z">
+<meta property="og:updated_time" content="2019-01-25T03:22:29.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C++基础]拷贝构造和重载">
+<meta name="twitter:description" content="函数重载和默认参数，拷贝构造，符号重载">
 
 
 
@@ -123,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="https://carolinecomet.github.io/2019/01/25/C-基础-拷贝构造和重载/">
+  <link rel="canonical" href="https://carolinecomet.github.io/2018/05/27/C-基础-拷贝构造和重载/">
 
 
 
@@ -288,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2019/01/25/C-基础-拷贝构造和重载/">
+    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2018/05/27/C-基础-拷贝构造和重载/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lujing">
@@ -317,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T10:46:44+08:00">
-                2019-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T16:26:44+08:00">
+                2018-05-27
               </time>
             
 
@@ -327,6 +331,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/c-基础/" itemprop="url" rel="index">
+                    <span itemprop="name">c++基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -349,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.4k
                 </span>
               
 
@@ -365,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -386,7 +412,145 @@
       
 
       
-        
+        <p></p><p class="description"></p><br>函数重载和默认参数，拷贝构造，符号重载<br><a id="more"></a><p></p>
+<h1 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h1><pre><code>void fun(int a=12,char c=&apos;c&apos;)
+{
+
+}
+//全部指定
+void fun1(int a ,char c,float f==12.1)
+{
+
+}
+部分指定，从右向左连续指定
+</code></pre><p>函数调用，有默认值的参数可以不用传递实参<br><br>有默认值，传递实参回覆盖默认值</p>
+<h1 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h1><p>同一作用域内：函数声明向下<br><br>函数名相同，参数个数或者类型不同<br><br><strong>返回值不能作为函数重载的条件</strong><br><br>当一个函数有两个形参，一个是默认参数，另一个函数重载也是两个形参，会造成调用不明确</p>
+<h1 id="拷贝构造"><a href="#拷贝构造" class="headerlink" title="拷贝构造"></a>拷贝构造</h1><p><strong>c++不允许拷贝构造函数传值参数</strong><br><br>构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值</p>
+<pre><code>public：
+    CStu()
+    {
+    CStu(const CStu&amp; a)
+    }
+</code></pre><h2 id="何时调用"><a href="#何时调用" class="headerlink" title="何时调用"></a>何时调用</h2><p>1.创建对象并初始化为同类对象</p>
+<pre><code>CStu a;
+1 CStu a1(a);
+2 CStu a2=a;
+3 CStu a3=CStu(a)
+4 CStu *a3=new CStu(a)
+5 a4=a//这个不会调用
+</code></pre><p>2 程序生成对象副本</p>
+<pre><code>//1:将以个对象作为实参传递给一个非引用类型的形参，
+  //对象以值传递的方式传入函数参数
+void fun(CStu a1)//类外函数
+  //调用
+  fun(a)
+</code></pre><p> 调用过程：<br><br> （1）当对象a传入fun函数的形参时，会产生一个临时变量，我们把这个临时变量叫做a1；<br><br> （2）调用拷贝构造函数，把test的值赋给a1，类似于 Cstu a1(a)<br><br> （3）等fun函数执行完，析构掉a1对象<br></p>
+<pre><code>//2从一个返回类型为非引用类型的函数返回一个对象
+// 对象以值传递的方式从函数返回
+CStu fun()
+  {
+    CStu a ;
+    return a;//返回值相当于一个临时变量，调用拷贝构造
+  }
+  //调用
+  fun( )
+</code></pre><p> 调用过程：<br><br> （1）当执行到return时，产生一个临时变量XX<br><br> （2）调用拷贝构造函数把a的值赋给XX，有点像CStu XX（a）<br><br> （3）拷贝构造函数执行到最后，析构掉a局部变量<br><br> （4）fun函数执行完析构掉XX</p>
+<h2 id="拷贝初始化和直接初始化"><a href="#拷贝初始化和直接初始化" class="headerlink" title="拷贝初始化和直接初始化"></a>拷贝初始化和直接初始化</h2><p>拷贝初始化：把右边的运算对象拷贝到正在创建的对象中<br><br>直接初始化：使用普通的函数匹配来选择和我们提供参数最匹配的构造函数</p>
+<h2 id="情况"><a href="#情况" class="headerlink" title="情况"></a>情况</h2><p>默认的复制构造函数，逐个复制非静态成员（浅复制）复制的是成员的值。</p>
+<pre><code>stcrpy_s(c,4,&apos;abc&apos;)//4:元素个数
+</code></pre><p>默认拷贝构造可以不写，执行的就是复制内容</p>
+<pre><code>CStu(const CStu &amp;a)
+{
+    this-&gt;b=a.b;
+    stcrpy_c(this-&gt;c,4,a.c)
+    //必须写全复制内容
+}
+</code></pre><p>同一个类的多个对象，内存排布一样，地址不同<br></p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><pre><code>int *a;
+CStu()
+{
+    a=new int[2];//指针可以指向数组的首地址
+    a[0]=1;
+    a[1]=2;//数组别忘了在析构函数释放空间
+
+}
+//mian：
+CStu st;
+CStu st1=st;
+</code></pre><p>程序会报错，原因如下：<br><br>浅拷贝只是将成员的值进行赋值，两个指针指向一个空间，销毁对象时，析构函数会释放两次，报错。解决方法利用深拷贝</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>对于对象中动态成员，就不能仅仅简单地赋值了，而应该重新动态分配空间</p>
+<pre><code>CStu(const CStu&amp; b)
+{
+    this.a-&gt;new int[2]
+    this.a[0]=b.a[0]
+    this.a[1]=b.a[1]
+}
+    //mian：
+CStu st;
+CStu st1=st;
+</code></pre><p> 让st1有自己的空间</p>
+<p> 可以利用函数</p>
+<pre><code>mencpy(this.a,b.c,8)//8表示字节
+</code></pre><p>还有一个方法明天试一下</p>
+<pre><code>    p = new int;    // 为新对象重新动态分配空间  
+*p = *(r.p);  
+</code></pre><p> <strong>指针成员要用深拷贝，不能直接赋值</strong></p>
+<h1 id="返回值为引用"><a href="#返回值为引用" class="headerlink" title="返回值为引用"></a>返回值为引用</h1><p>我们的重载运算符返回void、返回对象本身、返回对象引用都是可以的，并不是说一定要返回一个引用，只不过在不同的情况下需要不同的返回值。<br><br>主要是两个原因：<br><br>1.允许进行连续赋值</p>
+<p>2.防止返回对象的时候调用拷贝构造函数和析构函数导致不必要的开销，降低赋值运算符的效率。<br></p>
+<h2 id="重载运算符返回地址"><a href="#重载运算符返回地址" class="headerlink" title="重载运算符返回地址"></a>重载运算符返回地址</h2><p>类内重载！！</p>
+<pre><code>int a=1;
+double b=1.2;
+int nerror = -1;
+ void* operator [](int n)
+  {
+      switch(n)
+      {
+      case 0:
+          return &amp;a;
+      case 1:
+          return &amp;b;
+      }
+      return &amp;nerror;
+  }
+  //main
+  cout&lt;&lt; st[1];//取出了a值得地址
+
+  //如果要取出地址相对应的值，利用*取值
+  cout&lt;&lt;*st[1];//报错，因为返回的void类型没有确定的大小
+
+  cout&lt;&lt;*(double*)st[1];//取出相应的值
+</code></pre><p>void* ：通用类型指针，其他类型指针可以往它转换。<br><br>如果要对他赋值，也要有类型限制</p>
+<pre><code>*(double*)st[1]=14；
+cout&lt;&lt;*(double*)st[1];
+</code></pre><p><strong>不推荐这样使用，还是推荐使用引用返回值</strong></p>
+<pre><code>int&amp; operator [](int n)
+</code></pre><h2 id="自加自减运算符"><a href="#自加自减运算符" class="headerlink" title="自加自减运算符"></a>自加自减运算符</h2><p>前置++：</p>
+<pre><code>int operator ++ (CStu&amp; st)
+{
+    st.age+=1;
+    return st.age;
+}
+//main
+ CStu st;
+ cout&lt;&lt;++st;
+</code></pre><p>后置++：</p>
+<pre><code>int operator ++ (CStu&amp; st，int n)//int n 理解成一个标记，有int n就是后置++
+{
+    int a=st.age;
+    st.age+=1;
+    return a;
+
+}
+//main
+ CStu st;
+ cout&lt;&lt;st++;
+</code></pre><h2 id="重载类型转换"><a href="#重载类型转换" class="headerlink" title="重载类型转换"></a>重载类型转换</h2><pre><code>operator int() const//不改变对象内容
+{
+    return a;
+}
+</code></pre><p>没有返回类型！！但是要写返回值<br><br>必须是类内定义；</p>
+<h1 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h1><p>必须定义为成员函数<br><br>赋值运算符通常应该返回一个指向其左侧运算对象的引用</p>
+
       
     </div>
     
@@ -401,6 +565,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+          
+        </div>
+      
 
       
       
@@ -410,8 +580,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/25/C-基础-初始化和重载/" rel="next" title="[C++基础]初始化和重载">
-                <i class="fa fa-chevron-left"></i> [C++基础]初始化和重载
+              <a href="/2018/05/26/C-基础-一些函数/" rel="next" title="[C++基础]一些函数">
+                <i class="fa fa-chevron-left"></i> [C++基础]一些函数
               </a>
             
           </div>
@@ -420,8 +590,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/25/C-基础-继承/" rel="prev" title="[C++基础]继承">
-                [C++基础]继承 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/28/C-基础-初始化和重载/" rel="prev" title="[C++基础]初始化和宏定义">
+                [C++基础]初始化和宏定义 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,8 +670,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -600,6 +779,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#默认参数值"><span class="nav-number">1.</span> <span class="nav-text">默认参数值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数重载"><span class="nav-number">2.</span> <span class="nav-text">函数重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拷贝构造"><span class="nav-number">3.</span> <span class="nav-text">拷贝构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#何时调用"><span class="nav-number">3.1.</span> <span class="nav-text">何时调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拷贝初始化和直接初始化"><span class="nav-number">3.2.</span> <span class="nav-text">拷贝初始化和直接初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#情况"><span class="nav-number">3.3.</span> <span class="nav-text">情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浅拷贝"><span class="nav-number">3.4.</span> <span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝"><span class="nav-number">3.5.</span> <span class="nav-text">深拷贝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回值为引用"><span class="nav-number">4.</span> <span class="nav-text">返回值为引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重载运算符返回地址"><span class="nav-number">4.1.</span> <span class="nav-text">重载运算符返回地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自加自减运算符"><span class="nav-number">4.2.</span> <span class="nav-text">自加自减运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载类型转换"><span class="nav-number">4.3.</span> <span class="nav-text">重载类型转换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赋值运算符"><span class="nav-number">5.</span> <span class="nav-text">赋值运算符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -627,7 +822,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.1k</span>
+    <span title="Site words total count">9.8k</span>
   
  -->
 </div>
@@ -659,7 +854,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.1k字</span>
+  <span class="post-count">博客全站共9.8k字</span>
 </div>
         
 

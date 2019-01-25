@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[[牛客网]等差数列]]></title>
-    <url>%2F2019%2F10%2F19%2Fleetcode-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%2F</url>
-    <content type="text"><![CDATA[如果一个数列S满足对于所有的合法的i,都有S[i + 1] = S[i] + d, 这里的d也可以是负数和零,我们就称数列S为等差数列。小易现在有一个长度为n的数列x,小易想把x变为一个等差数列。小易允许在数列上做交换任意两个位置的数值的操作,并且交换操作允许交换多次。但是有些数列通过交换还是不能变成等差数列,小易需要判别一个数列是否能通过交换操作变成等差数列 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include&lt;iostream&gt;using namespace std; class Solution&#123;public: void Dengcha() &#123; int n; int d; int sum=0; cin&gt;&gt;n; int *a=new int[n]; for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i]; for(int i=0;i&lt;n;i++) &#123; for(int j=n-2;j&gt;=i;j--) &#123; if (a[j]&gt;a[j+1]) &#123; int temp=a[j]; a[j]=a[j+1]; a[j+1]=temp; &#125; &#125; &#125; d=a[1]-a[0]; for(int i=1;i&lt;n;i++) &#123; if( a[i]+d==a[i+1]) sum++; &#125; if (sum==n-2) cout&lt;&lt;"Possible"&lt;&lt;endl; else cout&lt;&lt;"Impossible"&lt;&lt;endl; &#125; &#125;;int main()&#123; Solution s; s.Dengcha(); &#125; 算法首先对数列中的数进行排序，然后算出前两个数的差，即假定为方差，然后再对每个数检验。 改进其中排序算法可以用sort函数代替1sort(a,a+n); 但是要引入 algorithm的头文件。]]></content>
+    <title><![CDATA[[牛客网]字符移位]]></title>
+    <url>%2F2019%2F01%2F25%2Fleetcode-%E5%AD%97%E7%AC%A6%E7%A7%BB%E4%BD%8D%2F</url>
+    <content type="text"><![CDATA[]]></content>
       <categories>
         <category>牛客网</category>
       </categories>
@@ -13,29 +13,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[[C++基础]继承]]></title>
-    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E7%BB%A7%E6%89%BF%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[[C++基础]拷贝构造和重载]]></title>
-    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E9%87%8D%E8%BD%BD%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[[C++基础]初始化和重载]]></title>
-    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%87%8D%E8%BD%BD%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[[C++基础]指针和引用]]></title>
-    <url>%2F2019%2F01%2F25%2FC-%E5%9F%BA%E7%A1%80-%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[[牛客网]字符移位]]></title>
-    <url>%2F2019%2F01%2F25%2Fleetcode-%E5%AD%97%E7%AC%A6%E7%A7%BB%E4%BD%8D%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[[牛客网]等差数列]]></title>
+    <url>%2F2018%2F10%2F19%2Fleetcode-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%2F</url>
+    <content type="text"><![CDATA[如果一个数列S满足对于所有的合法的i,都有S[i + 1] = S[i] + d, 这里的d也可以是负数和零,我们就称数列S为等差数列。小易现在有一个长度为n的数列x,小易想把x变为一个等差数列。小易允许在数列上做交换任意两个位置的数值的操作,并且交换操作允许交换多次。但是有些数列通过交换还是不能变成等差数列,小易需要判别一个数列是否能通过交换操作变成等差数列 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include&lt;iostream&gt;using namespace std; class Solution&#123;public: void Dengcha() &#123; int n; int d; int sum=0; cin&gt;&gt;n; int *a=new int[n]; for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i]; for(int i=0;i&lt;n;i++) &#123; for(int j=n-2;j&gt;=i;j--) &#123; if (a[j]&gt;a[j+1]) &#123; int temp=a[j]; a[j]=a[j+1]; a[j+1]=temp; &#125; &#125; &#125; d=a[1]-a[0]; for(int i=1;i&lt;n;i++) &#123; if( a[i]+d==a[i+1]) sum++; &#125; if (sum==n-2) cout&lt;&lt;"Possible"&lt;&lt;endl; else cout&lt;&lt;"Impossible"&lt;&lt;endl; &#125; &#125;;int main()&#123; Solution s; s.Dengcha(); &#125; 算法首先对数列中的数进行排序，然后算出前两个数的差，即假定为方差，然后再对每个数检验。 改进其中排序算法可以用sort函数代替1sort(a,a+n); 但是要引入 algorithm的头文件。]]></content>
       <categories>
         <category>牛客网</category>
       </categories>
@@ -153,9 +133,53 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[[C++基础]继承]]></title>
+    <url>%2F2018%2F05%2F30%2FC-%E5%9F%BA%E7%A1%80-%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"><![CDATA[继承因为本科的时候接触过一段时间java，对继承这个概念印象深刻。 继承限定词 public：父类怎样子类就怎样 class CChild: public CPeaple { }; protected:继承之后，父类的public降级成protected，父类中的protected和private不变父类中的属性不会改变 class CChild: protected CPeaple { }; private：继承之后，父类中都降级成private class CChild: private CPeaple { }; 成员的继承无参构造函数：继承构造的调用顺序：先父类再子类； 含参构造函数如果父类有构造函数，且有参数，子类的构造函数一定要写出来。参数在参数列表传递 class CFather { public: CFather(int a); { } } class CSon:public CFather { public: int a; CSon():CFather(1); { } }; 参数传递只能两级之间。如果CFather继承了别的类，只需在CFather类中加入参数列表，和CSon没关系。当有多个构造函数时，根据参数列表的个数决定调用哪个构造函数 析构函数析构函数调用顺序：先子类再父类 覆盖在子类中有和父类中同名的数据成员，把父类中的覆盖，如果想在子类中用父类的数据成员：类内： cout&lt;&lt;CFather::a&lt;&lt;end; 类外： CSon so； cout&lt;&lt;so.CFather::a&lt;&lt;endl； 子类函数和父类函数同名，并不是重载，调用的时候必须使用CFather::来调用父类的函数。友元函数不能被继承 多态和虚函数多态只针对指针对象，虚函数只针对于函数成员；父类的指针调用子类的函数 CFather *fa = new CSon; fa-&gt;show()//普通函数只能调用父类自己的成员 虚函数virtual： //父类： virtual void show()//虚函数 { cout&lt;&lt;&quot;father&quot;&lt;&lt;endl } //子类： void show() { cout&lt;&lt;&quot;son&quot;&lt;&lt;endl } //main： CFather *fa = new CSon; fa-&gt;show()//用父类的指针调用子类的成员 只有函数名字一样，才能达到这个虚函数调用效果。 重写 针对虚函数； 1.父类是虚函数，子类重写的函数，默认是虚函数； 返回值类型必须相同 2.特殊情况（协变）：当返回的是当前类的引用或者指针，返回值的类型可以是各自类类型。3.虚函数不能是内联函数4.构造函数不能是虚函数 虚表CFather* fa=new CSon; fa-&gt;show; *(int*)fa//获得的是虚表的首地址 把对象的首地址转成int （四字节） ，然后取对象首地址的地址 *(int*)*(int*)fa//获得的是虚表的第一个的地址内容（fun） *((int*)*(int*)fa+1)//获得的是续表第二个的地址内容（show） 虚表的首地址并不知道是什么类型，所以要先转换成int*,然后递增 代码实现： typedef void (*p)(); ((p)(*(int*)*(int*)fa+0)))()//调用 取内容 fun 虚析构多态中，如果释放父类指针，只会调用父类的析构函数，变成虚析构后，子类父类都调用]]></content>
+      <categories>
+        <category>c++基础</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]初始化和宏定义]]></title>
+    <url>%2F2018%2F05%2F28%2FC-%E5%9F%BA%E7%A1%80-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%87%8D%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[初始化，宏定义，常函数和静态成员 初始化和赋值的区别初始化：变量和对象产生的时候赋予一个值，伴随性质赋值：产生之后赋予一个值，随意性质数组的赋值只能单个赋值 int b[12]; b[0]=1; b[1]=2 引用和const一定要初始化 初始化列表class CStu { public: int a; float f; //第一种 CStu():a(12),f(12.23f)//初始化列表 { } //第二种 CStu(int b,float c):a(b),f(c)//初始化的顺序只和声明顺序有关，和书写顺序无关 { } //第三种 CStu():a(12),f(a)//成员间的初始化，f和a要一个类型 { } } 引用和const初始化class CStu { public: int b; int &amp;a; //第一种 CStu(int c):a(b),b(c)//a(c),b(c)这样赋值不行，在构造函数可以输出，但main不行。初始化列表 { } c是局部变量，给b赋值完后，它的值就不存在了 //第二种 CStu(int &amp;c):a(c),b(c) 主函数： int d=12; CStu stu(d) d的作用范围大，一直在 数组和结构体使用初始化列表数组int a[4]; //第一种 CStu():a()//输出都为0，但不是所有编译器都允许 //第二种 CStu() { for(int i=0;i&lt;4;i++) { a[i]=0; } } //第三种 CStu() { memset(a,0,16)//16:占4*4个字节 } 结构体1. struct STU { int i; float f; }; 结构体可以直接赋值 在main函数： STU st={1,12.23f}; STU st1=st//结构体可以这样赋值 2.有疑问在类里调用一个结构体 STU st; CStu(STU sd):st(sd) { } 在main函数里 STU sf={12,12.12f} CStu stu(sf) 宏定义用来将一个标识符定义为一个字符串，该标识符被称为宏名，被定义的字符串称为替换文本(1)简单的宏定义: #define &lt;宏名&gt; &lt;字符串&gt;例： #define PI 3.1415926 (2) 带参数的宏定义 #define &lt;宏名&gt; (&lt;参数表&gt;) &lt;宏体&gt;例： #define A(x) x 如果是自己编程使用宏替换，则在使用简单宏定义时，当字符串中不只一个符号时，加上括号表现出优先级，如果是带参数的宏定义，则要给宏体中的每个参数加上括号，并在整个宏体上再加一个括号。看到这里，不禁要问，用宏定义这么麻烦，这么容易出错，可不可以摒弃它， 那让我们来看一下在C语言中用宏定义的好处吧。 常函数int a; void show()const { a=12;//报错，常函数不能修改数据成员 int b=12 //内部允许这样 } 常对象： const CStu stu 只能调用常函数，不能调用普通函数 静态成员static int a; static void fun(); 类外初始化，静态成员受private修饰 类外： int CStu::a=13//类外不用加static 输出： cout&lt;&lt;CStu::a&lt;&lt;endl //或者 CStu st; st.a; 静态函数不能调用普通成员静态成员时其他对象公有的，都可以访问 不使用for循环累加class CStu { public: static int b; CStu() { b++; } } int main() { CStu st[5];//5个对象，调用5个构造函数，b++五次，因为静态成员是共享的 cout&lt;&lt;CStu::b&lt;&lt;endl }]]></content>
+      <categories>
+        <category>c++基础</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]拷贝构造和重载]]></title>
+    <url>%2F2018%2F05%2F27%2FC-%E5%9F%BA%E7%A1%80-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E9%87%8D%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[函数重载和默认参数，拷贝构造，符号重载 默认参数值void fun(int a=12,char c=&apos;c&apos;) { } //全部指定 void fun1(int a ,char c,float f==12.1) { } 部分指定，从右向左连续指定 函数调用，有默认值的参数可以不用传递实参有默认值，传递实参回覆盖默认值 函数重载同一作用域内：函数声明向下函数名相同，参数个数或者类型不同返回值不能作为函数重载的条件当一个函数有两个形参，一个是默认参数，另一个函数重载也是两个形参，会造成调用不明确 拷贝构造c++不允许拷贝构造函数传值参数构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值 public： CStu() { CStu(const CStu&amp; a) } 何时调用1.创建对象并初始化为同类对象 CStu a; 1 CStu a1(a); 2 CStu a2=a; 3 CStu a3=CStu(a) 4 CStu *a3=new CStu(a) 5 a4=a//这个不会调用 2 程序生成对象副本 //1:将以个对象作为实参传递给一个非引用类型的形参， //对象以值传递的方式传入函数参数 void fun(CStu a1)//类外函数 //调用 fun(a) 调用过程： （1）当对象a传入fun函数的形参时，会产生一个临时变量，我们把这个临时变量叫做a1； （2）调用拷贝构造函数，把test的值赋给a1，类似于 Cstu a1(a) （3）等fun函数执行完，析构掉a1对象 //2从一个返回类型为非引用类型的函数返回一个对象 // 对象以值传递的方式从函数返回 CStu fun() { CStu a ; return a;//返回值相当于一个临时变量，调用拷贝构造 } //调用 fun( ) 调用过程： （1）当执行到return时，产生一个临时变量XX （2）调用拷贝构造函数把a的值赋给XX，有点像CStu XX（a） （3）拷贝构造函数执行到最后，析构掉a局部变量 （4）fun函数执行完析构掉XX 拷贝初始化和直接初始化拷贝初始化：把右边的运算对象拷贝到正在创建的对象中直接初始化：使用普通的函数匹配来选择和我们提供参数最匹配的构造函数 情况默认的复制构造函数，逐个复制非静态成员（浅复制）复制的是成员的值。 stcrpy_s(c,4,&apos;abc&apos;)//4:元素个数 默认拷贝构造可以不写，执行的就是复制内容 CStu(const CStu &amp;a) { this-&gt;b=a.b; stcrpy_c(this-&gt;c,4,a.c) //必须写全复制内容 } 同一个类的多个对象，内存排布一样，地址不同 浅拷贝int *a; CStu() { a=new int[2];//指针可以指向数组的首地址 a[0]=1; a[1]=2;//数组别忘了在析构函数释放空间 } //mian： CStu st; CStu st1=st; 程序会报错，原因如下：浅拷贝只是将成员的值进行赋值，两个指针指向一个空间，销毁对象时，析构函数会释放两次，报错。解决方法利用深拷贝 深拷贝对于对象中动态成员，就不能仅仅简单地赋值了，而应该重新动态分配空间 CStu(const CStu&amp; b) { this.a-&gt;new int[2] this.a[0]=b.a[0] this.a[1]=b.a[1] } //mian： CStu st; CStu st1=st; 让st1有自己的空间 可以利用函数 mencpy(this.a,b.c,8)//8表示字节 还有一个方法明天试一下 p = new int; // 为新对象重新动态分配空间 *p = *(r.p); 指针成员要用深拷贝，不能直接赋值 返回值为引用我们的重载运算符返回void、返回对象本身、返回对象引用都是可以的，并不是说一定要返回一个引用，只不过在不同的情况下需要不同的返回值。主要是两个原因：1.允许进行连续赋值 2.防止返回对象的时候调用拷贝构造函数和析构函数导致不必要的开销，降低赋值运算符的效率。 重载运算符返回地址类内重载！！ int a=1; double b=1.2; int nerror = -1; void* operator [](int n) { switch(n) { case 0: return &amp;a; case 1: return &amp;b; } return &amp;nerror; } //main cout&lt;&lt; st[1];//取出了a值得地址 //如果要取出地址相对应的值，利用*取值 cout&lt;&lt;*st[1];//报错，因为返回的void类型没有确定的大小 cout&lt;&lt;*(double*)st[1];//取出相应的值 void* ：通用类型指针，其他类型指针可以往它转换。如果要对他赋值，也要有类型限制 *(double*)st[1]=14； cout&lt;&lt;*(double*)st[1]; 不推荐这样使用，还是推荐使用引用返回值 int&amp; operator [](int n) 自加自减运算符前置++： int operator ++ (CStu&amp; st) { st.age+=1; return st.age; } //main CStu st; cout&lt;&lt;++st; 后置++： int operator ++ (CStu&amp; st，int n)//int n 理解成一个标记，有int n就是后置++ { int a=st.age; st.age+=1; return a; } //main CStu st; cout&lt;&lt;st++; 重载类型转换operator int() const//不改变对象内容 { return a; } 没有返回类型！！但是要写返回值必须是类内定义； 赋值运算符必须定义为成员函数赋值运算符通常应该返回一个指向其左侧运算对象的引用]]></content>
+      <categories>
+        <category>c++基础</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[C++基础]一些函数]]></title>
     <url>%2F2018%2F05%2F26%2FC-%E5%9F%BA%E7%A1%80-%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[析构函数，构造函数，友元和接口函数等 析构函数1~CStu（）//只有一个，不能重载，不能有参数 对象声明周期结束时，自动调用后括号}或者碰到return构造函数是遇到声明语句马上调用12345678 &#123; CStu stu;//执行到这一步，直接调用构造函数 &#125;//执行到这一步，调用析构函数或者return``` 指针对象遇到delete才调用析构函数```cpp Cstu* stu = new CStu; delete stu; 临时对象,作用鱼仅限这一行代码，创建完直接调用析构函数123456789101112 CStu(12)//在内部是创建了一个对象 CStu tu(12)``` **malloc free和 new delete区别**&lt;br&gt;## tihs 指针this指针创建对象时才有（不是成员）&lt;br&gt;当局部变量和外部变量同名```cpp int a; CStu(int a) &#123; this-&gt;a=a &#125; 是成员函数的隐含参数1234567CStu* GetAddr()&#123; return this&#125;//main函数：CStu* p=st.GetAddr()cout&lt;&lt;p&lt;&lt;endl st对象包含对象地址]]></content>
+    <content type="text"><![CDATA[析构函数，构造函数，友元和接口函数等 析构函数1~CStu（）//只有一个，不能重载，不能有参数 对象声明周期结束时，自动调用后括号}或者碰到return构造函数是遇到声明语句马上调用12345678 &#123; CStu stu;//执行到这一步，直接调用构造函数 &#125;//执行到这一步，调用析构函数或者return``` 指针对象遇到delete才调用析构函数```cpp Cstu* stu = new CStu; delete stu; 临时对象,作用鱼仅限这一行代码，创建完直接调用析构函数123456789101112 CStu(12)//在内部是创建了一个对象 CStu tu(12)``` **malloc free和 new delete区别**&lt;br&gt;## tihs 指针this指针创建对象时才有（不是成员）&lt;br&gt;当局部变量和外部变量同名```cpp int a; CStu(int a) &#123; this-&gt;a=a &#125; 是成员函数的隐含参数1234567CStu* GetAddr()&#123; return this&#125;//main函数：CStu* p=st.GetAddr()cout&lt;&lt;p&lt;&lt;endl st对象包含对象地址 构造函数class CStu { public: int age; float f;//只有静态常量才能在类中初始化 void fun()//相当于类的初始化函数 { age=12; f=12.12f; } CStu()//构造函数，无返回值 { age=13; f=12.13f; } } int main() { CStu stu; stu.fun(); cout &lt;&lt; stu.a &lt;&lt; &quot; &quot; &lt;&lt; endl; system(&quot;pause&quot;); return 0; } //需要先调用fun函数，才能调用变量a， 如果有构造函数，可以直接调用 CStu stu; cout &lt;&lt; stu.a &lt;&lt; &quot; &quot; &lt;&lt; endl; 1.作用 2.执行时间：对象创建时调用 CStu *stu = new CStu; stu-&gt;age; 数组new是才能创建对象调用构造函数 构造函数的类型带参数Cstu(int a,float b)//可以指定默认值 { age=a; f=b; } 如果构造函数有参数，在声明时一定要传参 CStu stu(12,12.23f);//不传参数不要括号 可以有多个构造函数（重载） 友元在类里面声明一个友元 Class CStu { public: int a; float b; friend class CTech;//友元类 friend void fun();//友元函数，外部fun函数就是调用类里面的私有和protected变量 } Class CTech { } //友元类去使用私有变量 不受访问修饰符的限制，但是破坏了类的封装性 接口函数Class CStu { private: int age; public: void set()//接口函数 { age=13; } int get()//接口函数 { return age; } } int main() { CStu stu; stu.set(); int a=stu.get(); } age是类里面的私有变量，为了类的封装性。采用接口函数]]></content>
+      <categories>
+        <category>c++基础</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C++基础]指针和引用]]></title>
+    <url>%2F2018%2F05%2F26%2FC-%E5%9F%BA%E7%A1%80-%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[指针，引用，引用变量，引用做参数和返回值，指针和引用的区别 指针new申请指针空间申请单个空间的时候，可以直接初始化但是申请数组时，可以使用memset赋值 delete释放指针在释放数组时，要加方括号 #include &lt;iostream&gt; using namespace std; int main() { ////申请单个空间 //int *p = new int;//new+type 类型匹配上 也可以直接初始化 new int(12) //int *p1=malloc(sizeof(int));c语言！ //char *p = new char; //*p = 12;//写 //cout &lt;&lt; *p &lt;&lt; endl;//读 //delete p;//释放 //申请数组 int *p = new int[5]; memset(p,0,5*4)//赋值数组，5个值，每个int占4个字节，总共20个字节 //int *p1 = malloc(5 * 4); c语言 p[0] = 12; p[1] = 11; cout &lt;&lt; p[0] &lt;&lt; &quot; &quot; &lt;&lt; p[1] &lt;&lt; endl; system(&quot;pause&quot;); delete[]p;//释放数组P 要方括号 return 0; } *作用1 在申明一个变量的时候，*指针变量2 地址操作符 读写3 数字 表示乘法 对内存的操作读 写 取地址&amp; 引用给变量取别名 int a=12; int &amp;c=a;//声明变量a的一个引用c，c时变量a的一个别名 c=13//a的值也改变了 引用的时候一定要初始化可以被多个变量引用与赋值概念不同 指针这个和指针不同 *p=&amp;a; p指向的是a的地址，而不是a本身 但是取别名的话，直接关联本身 其他类型的引用常量的引用const int&amp; a = 12; 不可以修改a的值，只能读 数组的引用1 一维数组： int ar[12]; int (&amp;p)[12]=ar;//引用 类型 2 二维数组 int arr[2][3]; int (&amp;p)[2][3]=arr; 指针的引用int b=12; int *p=&amp;b; int *(&amp;p1)=p; 引用做参数void fun(int&amp; a) { a=13; count&lt;&lt;a&lt;&lt;endl; } void fun1(int a) { a=14; coutn&lt;&lt;a&lt;&lt;endl; } void fun2(int* a) { *a=15; } int main() { int b=12; fun(b); fun1(b); fun2(&amp;b); return 0; } 1.调用fun函数时，a初始化成b,a和b关联同一个空间,在函数fun里给a赋值，调用时，b的值也改变成和a一样 2.调用fun1函数时，把b赋值给了a，给a的空间传递了一个b的值，fun1函数里面a赋值，并不会改变b 3.c语言中，通过调用指针改变外部的值,如图： （引用）交换两个变量的值void exchange(int&amp; a,int&amp; b) { int temp=a; a=b; b=temp; } 不引用直接传入无法改变 指针传入也可以改变两个变量的值 void exchange(int*a,int*b) { int *temp=*a; *a=*b; *b=*temp; } 引用做返回值int&amp; fun() { int a=12; return a; } int main() { int&amp; b=fun(); cout&lt;&lt;b&lt;&lt;endl; system(&quot;pause&quot;); return 0; } 第九行调用了局部变量后，a的内容空间销毁，第十行是非法空间操作！！不要引用局部变量 引用不占存储空间，指针占空间 &amp;作用： 1.变量前加 做引用 2.取地址 3.与运算 引用做参数void fun(int&amp; a) { a=13; count&lt;&lt;a&lt;&lt;endl; } void fun1(int a) { a=14; coutn&lt;&lt;a&lt;&lt;endl; } void fun2(int* a) { *a=15; } int main() { int b=12; fun(b); fun1(b); fun2(&amp;b); return 0; } 1.调用fun函数时，a初始化成b,a和b关联同一个空间,在函数fun里给a赋值，调用时，b的值也改变成和a一样 2.调用fun1函数时，把b赋值给了a，给a的空间传递了一个b的值，fun1函数里面a赋值，并不会改变b 3.c语言中，通过调用指针改变外部的值,如图： （引用）交换两个变量的值void exchange(int&amp; a,int&amp; b) { int temp=a; a=b; b=temp; } 不引用直接传入无法改变 指针传入也可以改变两个变量的值 void exchange(int*a,int*b) { int *temp=*a; *a=*b; *b=*temp; } 引用引用只是别名，不是实体类型（也就是说c++编译器不为引用单独分配内存空间），对一个对象的引用，就是直接对这个对象的操作。 （1）引用必须初始化(引用必须指向所引用的对象) int a = 3;&lt;br&gt; int&amp; ra = a;&lt;br&gt; int &amp;b ;//错误，引用必须初始化 (3)引用不能更换目标 int&amp; ra = a; // int&amp; ra = b;//错误，多次初始化 引用的使用场合？（一）引用型参数（函数形参只是实参的别名，也就是说形参和实参是同一个对象）使用引用型参数有两个好处：（1）因为函数形参和实参是同一个对象，也就不存在对象复制，避免了对象的开销。（2）可以在修改形参的同时对实参的修改。因为不存在拷贝构造所以，可以提高c++程序的执行效率 （2）引用型返回值 从函数中返回引用，一定要保证在函数返回以后，被引用的目标一直有效，也就是不能返回函数体内的局部对象的引用，局部对象离开作用域就会被析构掉，所以不能返回对函数体内的局部对象的引用。 区别和联系指针可以不初始化，可以改变它指向的目标。]]></content>
       <categories>
         <category>c++基础</category>
       </categories>

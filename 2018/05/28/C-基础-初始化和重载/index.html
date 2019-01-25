@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="c++,">
 
 
 
@@ -86,14 +86,21 @@
 
 
 
+<meta name="description" content="初始化，宏定义，常函数和静态成员">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C++基础]继承">
-<meta property="og:url" content="https://carolinecomet.github.io/2019/01/25/C-基础-继承/index.html">
+<meta property="og:title" content="[C++基础]初始化和宏定义">
+<meta property="og:url" content="https://carolinecomet.github.io/2018/05/28/C-基础-初始化和重载/index.html">
 <meta property="og:site_name" content="Lujing">
+<meta property="og:description" content="初始化，宏定义，常函数和静态成员">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-25T02:47:08.476Z">
+<meta property="og:image" content="f:/YJS/C++/初始化.jpg">
+<meta property="og:image" content="f:/YJS/C++/1.jpg">
+<meta property="og:updated_time" content="2019-01-25T03:16:05.682Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[C++基础]继承">
+<meta name="twitter:title" content="[C++基础]初始化和宏定义">
+<meta name="twitter:description" content="初始化，宏定义，常函数和静态成员">
+<meta name="twitter:image" content="f:/YJS/C++/初始化.jpg">
 
 
 
@@ -123,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://carolinecomet.github.io/2019/01/25/C-基础-继承/">
+  <link rel="canonical" href="https://carolinecomet.github.io/2018/05/28/C-基础-初始化和重载/">
 
 
 
 
 
-  <title>[C++基础]继承 | Lujing</title>
+  <title>[C++基础]初始化和宏定义 | Lujing</title>
   
 
 
@@ -288,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2019/01/25/C-基础-继承/">
+    <link itemprop="mainEntityOfPage" href="https://carolinecomet.github.io/2018/05/28/C-基础-初始化和重载/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lujing">
@@ -305,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[C++基础]继承</h1>
+          <h1 class="post-title" itemprop="name headline">[C++基础]初始化和宏定义</h1>
         
 
         <div class="post-meta">
@@ -317,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T10:47:08+08:00">
-                2019-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T20:11:21+08:00">
+                2018-05-28
               </time>
             
 
@@ -327,6 +334,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/c-基础/" itemprop="url" rel="index">
+                    <span itemprop="name">c++基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -349,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  824
                 </span>
               
 
@@ -365,7 +394,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -386,7 +415,117 @@
       
 
       
-        
+        <p></p><p class="description"></p><br>初始化，宏定义，常函数和静态成员<br><a id="more"></a><p></p>
+<h1 id="初始化和赋值的区别"><a href="#初始化和赋值的区别" class="headerlink" title="初始化和赋值的区别"></a>初始化和赋值的区别</h1><p>初始化：变量和对象产生的时候赋予一个值，伴随性质<br><br>赋值：产生之后赋予一个值，随意性质<br><br>数组的赋值只能单个赋值</p>
+<pre><code>int b[12];
+b[0]=1;
+b[1]=2
+</code></pre><p><strong> 引用和const一定要初始化</strong><br></p>
+<h1 id="初始化列表"><a href="#初始化列表" class="headerlink" title="初始化列表"></a>初始化列表</h1><pre><code>class CStu
+{
+public:
+    int a;
+    float f;
+    //第一种
+    CStu():a(12),f(12.23f)//初始化列表
+    {
+    }
+    //第二种
+    CStu(int b,float c):a(b),f(c)//初始化的顺序只和声明顺序有关，和书写顺序无关
+    {
+    }
+    //第三种
+    CStu():a(12),f(a)//成员间的初始化，f和a要一个类型
+    {
+    }
+
+}
+</code></pre><h1 id="引用和const初始化"><a href="#引用和const初始化" class="headerlink" title="引用和const初始化"></a>引用和const初始化</h1><pre><code>class CStu
+{
+public:
+    int b;
+    int &amp;a;
+    //第一种
+    CStu(int c):a(b),b(c)//a(c),b(c)这样赋值不行，在构造函数可以输出，但main不行。初始化列表
+    {
+    }
+</code></pre><p><img src="F:\YJS\C++\初始化.jpg" alt="avatar"><br>c是局部变量，给b赋值完后，它的值就不存在了<br>    //第二种<br>    CStu(int &amp;c):a(c),b(c)<br> 主函数：</p>
+<pre><code>int d=12;
+CStu stu(d)
+</code></pre><p> d的作用范围大，一直在<br> <img src="F:\YJS\C++\1.jpg" alt="avatar"></p>
+<h2 id="数组和结构体使用初始化列表"><a href="#数组和结构体使用初始化列表" class="headerlink" title="数组和结构体使用初始化列表"></a>数组和结构体使用初始化列表</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><pre><code>int a[4];
+//第一种
+CStu():a()//输出都为0，但不是所有编译器都允许
+//第二种
+CStu()
+{
+    for(int i=0;i&lt;4;i++)
+    {
+           a[i]=0;
+    }
+ }
+ //第三种
+ CStu()
+ {
+     memset(a,0,16)//16:占4*4个字节
+ }
+</code></pre><h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>1.</p>
+<pre><code>struct STU
+{
+    int i;
+    float f;
+};
+</code></pre><p> 结构体可以直接赋值 在main函数：</p>
+<pre><code>STU st={1,12.23f};
+STU st1=st//结构体可以这样赋值
+</code></pre><p>2.<strong>有疑问</strong><br><br>在类里调用一个结构体</p>
+<pre><code>STU st;
+CStu(STU sd):st(sd)
+{
+}
+</code></pre><p>在main函数里</p>
+<pre><code>STU sf={12,12.12f}
+CStu stu(sf)
+</code></pre><h1 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h1><p>用来将一个标识符定义为一个字符串，该标识符被称为宏名，被定义的字符串称为替换文本<br><br>(1)简单的宏定义:</p>
+<p>#define &lt;宏名&gt;　　&lt;字符串&gt;<br><br>例： #define PI 3.1415926<br></p>
+<p>(2) 带参数的宏定义</p>
+<p>#define &lt;宏名&gt; (&lt;参数表&gt;) &lt;宏体&gt;<br><br>例： #define A(x) x<br></p>
+<p>如果是自己编程使用宏替换，则在使用简单宏定义时，当字符串中不只一个符号时，加上括号表现出优先级，如果是带参数的宏定义，则要给宏体中的每个参数加上括号，并在整个宏体上再加一个括号。看到这里，不禁要问，用宏定义这么麻烦，这么容易出错，可不可以摒弃它， 那让我们来看一下在C语言中用宏定义的好处吧。</p>
+<h1 id="常函数"><a href="#常函数" class="headerlink" title="常函数"></a>常函数</h1><pre><code>int a;
+void show()const
+{
+    a=12;//报错，常函数不能修改数据成员
+    int b=12 //内部允许这样
+}
+</code></pre><p> 常对象：</p>
+<pre><code>const CStu stu
+</code></pre><p> 只能调用常函数，不能调用普通函数</p>
+<h1 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h1><pre><code>static int a;
+static void fun();
+</code></pre><p> 类外初始化，静态成员受private修饰</p>
+<p> 类外：</p>
+<pre><code>int CStu::a=13//类外不用加static
+</code></pre><p> 输出：</p>
+<pre><code>cout&lt;&lt;CStu::a&lt;&lt;endl
+//或者
+CStu st;
+st.a;
+</code></pre><p>静态函数不能调用普通成员<br>静态成员时其他对象公有的，都可以访问</p>
+<h2 id="不使用for循环累加"><a href="#不使用for循环累加" class="headerlink" title="不使用for循环累加"></a>不使用for循环累加</h2><pre><code>class CStu
+{
+public:
+    static int b;
+    CStu()
+    {
+    b++;
+    }
+}
+int main()
+{
+    CStu st[5];//5个对象，调用5个构造函数，b++五次，因为静态成员是共享的
+    cout&lt;&lt;CStu::b&lt;&lt;endl
+}
+</code></pre>
       
     </div>
     
@@ -401,6 +540,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+          
+        </div>
+      
 
       
       
@@ -410,7 +555,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/25/C-基础-拷贝构造和重载/" rel="next" title="[C++基础]拷贝构造和重载">
+              <a href="/2018/05/27/C-基础-拷贝构造和重载/" rel="next" title="[C++基础]拷贝构造和重载">
                 <i class="fa fa-chevron-left"></i> [C++基础]拷贝构造和重载
               </a>
             
@@ -420,8 +565,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/19/leetcode-等差数列/" rel="prev" title="[牛客网]等差数列">
-                [牛客网]等差数列 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/30/C-基础-继承/" rel="prev" title="[C++基础]继承">
+                [C++基础]继承 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,8 +645,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -600,6 +754,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化和赋值的区别"><span class="nav-number">1.</span> <span class="nav-text">初始化和赋值的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化列表"><span class="nav-number">2.</span> <span class="nav-text">初始化列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用和const初始化"><span class="nav-number">3.</span> <span class="nav-text">引用和const初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组和结构体使用初始化列表"><span class="nav-number">3.1.</span> <span class="nav-text">数组和结构体使用初始化列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">3.1.1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构体"><span class="nav-number">3.1.2.</span> <span class="nav-text">结构体</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宏定义"><span class="nav-number">4.</span> <span class="nav-text">宏定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常函数"><span class="nav-number">5.</span> <span class="nav-text">常函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态成员"><span class="nav-number">6.</span> <span class="nav-text">静态成员</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不使用for循环累加"><span class="nav-number">6.1.</span> <span class="nav-text">不使用for循环累加</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -627,7 +797,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.1k</span>
+    <span title="Site words total count">9.8k</span>
   
  -->
 </div>
@@ -659,7 +829,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.1k字</span>
+  <span class="post-count">博客全站共9.8k字</span>
 </div>
         
 

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Lujing">
 <meta property="og:description" content="析构函数，构造函数，友元和接口函数等">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-25T02:45:15.735Z">
+<meta property="og:updated_time" content="2019-01-25T02:55:19.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C++基础]一些函数">
 <meta name="twitter:description" content="析构函数，构造函数，友元和接口函数等">
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  260
+                  629
                 </span>
               
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -418,6 +418,85 @@
 <p>临时对象,作用鱼仅限这一行代码，创建完直接调用析构函数<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    CStu(<span class="number">12</span>)<span class="comment">//在内部是创建了一个对象 CStu tu(12)</span></span><br><span class="line">```    </span><br><span class="line"> **<span class="built_in">malloc</span> <span class="built_in">free</span>和 <span class="keyword">new</span> <span class="keyword">delete</span>区别**&lt;br&gt;</span><br><span class="line">## tihs 指针</span><br><span class="line"><span class="keyword">this</span>指针创建对象时才有（不是成员）&lt;br&gt;</span><br><span class="line">当局部变量和外部变量同名</span><br><span class="line">```cpp	</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    CStu(<span class="keyword">int</span> a)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">this</span>-&gt;a=a</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p> 是成员函数的隐含参数<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CStu* <span class="title">GetAddr</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//main函数：</span></span><br><span class="line">CStu* p=st.GetAddr()</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;p&lt;&lt;<span class="built_in">endl</span></span><br></pre></td></tr></table></figure></p>
 <p>st对象包含对象地址</p>
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><pre><code>class CStu
+{
+public:
+    int age;
+    float f;//只有静态常量才能在类中初始化
+    void fun()//相当于类的初始化函数
+    {
+        age=12;
+        f=12.12f;
+    }
+    CStu()//构造函数，无返回值
+    {
+        age=13;
+        f=12.13f;
+    }
+}
+int main()
+{
+      CStu stu;
+      stu.fun();
+      cout &lt;&lt; stu.a &lt;&lt; &quot; &quot;  &lt;&lt; endl;
+
+    system(&quot;pause&quot;);
+    return 0;
+}
+//需要先调用fun函数，才能调用变量a，
+</code></pre><p> 如果有构造函数，可以直接调用    </p>
+<pre><code>CStu stu;
+cout &lt;&lt; stu.a &lt;&lt; &quot; &quot;  &lt;&lt; endl;
+</code></pre><p> 1.作用<br><br> 2.执行时间：对象创建时调用</p>
+<pre><code>CStu *stu = new CStu;
+stu-&gt;age;
+</code></pre><p>数组new是才能创建对象调用构造函数</p>
+<h2 id="构造函数的类型"><a href="#构造函数的类型" class="headerlink" title="构造函数的类型"></a>构造函数的类型</h2><h3 id="带参数"><a href="#带参数" class="headerlink" title="带参数"></a>带参数</h3><pre><code>Cstu(int a,float b)//可以指定默认值
+{
+    age=a;
+    f=b;
+}
+</code></pre><p>如果构造函数有参数，在声明时一定要传参</p>
+<pre><code>CStu stu(12,12.23f);//不传参数不要括号
+</code></pre><p> 可以有多个构造函数（重载）</p>
+<h1 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h1><p>在类里面声明一个友元</p>
+<pre><code>Class CStu
+{
+public:
+    int a;
+    float b;
+     friend class CTech;//友元类
+    friend void fun();//友元函数，外部fun函数就是调用类里面的私有和protected变量
+}
+Class CTech
+{
+
+}
+//友元类去使用私有变量
+</code></pre><p>不受访问修饰符的限制，但是破坏了类的封装性<br></p>
+<h1 id="接口函数"><a href="#接口函数" class="headerlink" title="接口函数"></a>接口函数</h1><pre><code>Class CStu
+{
+private:
+    int age;
+public:
+    void set()//接口函数
+    {
+        age=13;
+    }
+    int get()//接口函数
+    {
+        return age;
+    }
+
+}
+
+int main()
+{
+    CStu stu;
+    stu.set();
+    int a=stu.get();
+}
+</code></pre><p> age是类里面的私有变量，为了类的封装性。采用接口函数</p>
 
       
     </div>
@@ -448,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/25/C-结构体/" rel="next" title="[C++基础]结构体和类">
-                <i class="fa fa-chevron-left"></i> [C++基础]结构体和类
+              <a href="/2018/05/26/C-基础-指针和引用/" rel="next" title="[C++基础]指针和引用">
+                <i class="fa fa-chevron-left"></i> [C++基础]指针和引用
               </a>
             
           </div>
@@ -458,8 +537,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/10/leetcode-两数相加/" rel="prev" title="[leetcode]两数相加">
-                [leetcode]两数相加 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/27/C-基础-拷贝构造和重载/" rel="prev" title="[C++基础]拷贝构造和重载">
+                [C++基础]拷贝构造和重载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +735,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#析构函数"><span class="nav-number">1.</span> <span class="nav-text">析构函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#析构函数"><span class="nav-number">1.</span> <span class="nav-text">析构函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数"><span class="nav-number">2.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数的类型"><span class="nav-number">2.1.</span> <span class="nav-text">构造函数的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#带参数"><span class="nav-number">2.1.1.</span> <span class="nav-text">带参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#友元"><span class="nav-number">3.</span> <span class="nav-text">友元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口函数"><span class="nav-number">4.</span> <span class="nav-text">接口函数</span></a></li></ol></div>
             
 
           </div>
@@ -690,7 +769,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.1k</span>
+    <span title="Site words total count">9.8k</span>
   
  -->
 </div>
@@ -722,7 +801,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.1k字</span>
+  <span class="post-count">博客全站共9.8k字</span>
 </div>
         
 
