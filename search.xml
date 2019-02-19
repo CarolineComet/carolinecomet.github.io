@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[[牛客网]字符移位]]></title>
-    <url>%2F2019%2F01%2F25%2Fleetcode-%E5%AD%97%E7%AC%A6%E7%A7%BB%E4%BD%8D%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[[牛客网]差值对数]]></title>
+    <url>%2F2018%2F11%2F08%2F%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%B7%AE%E5%80%BC%E5%AF%B9%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[小Q今天在上厕所时想到了这个问题：有n个数，两两组成二元组，相差最小的有多少对呢？相差最大呢？ 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273#include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;#include&lt;limits.h&gt;using namespace std;class Solution &#123;public: void fun(vector&lt;int&gt; v) &#123; sort(v.begin(), v.end()); int min = INT_MAX; for (int i = 1; i &lt; v.size(); i++) &#123; if (v[i] - v[i - 1] &lt; min) min = v[i] - v[i - 1]; &#125; int count1 = 0; if (min == 0) &#123; for (int i = 0; i &lt; v.size(); i++) &#123; int j = i + 1; while (j &lt; v.size() &amp;&amp; v[i] == v[j]) &#123; count1++; j++; &#125; &#125; &#125; else &#123; for (int i = 1; i &lt; v.size(); i++) &#123; if (v[i] - v[i - 1] == min) count1++; &#125; &#125; /*cout &lt;&lt; count1 &lt;&lt; endl;*/ int count2 = 0; int max1 = v[v.size() - 1]; int min1 = v[0]; int maxnum = 0, minnum = 0; for (int i = 0; i &lt; v.size(); i++) &#123; if (v[i] == max1) maxnum++; if (v[i] == min1) minnum++; &#125; if (max1 == min1) count2 = v.size()*(v.size() - 1) / 2; else count2 = maxnum * minnum; cout &lt;&lt;count1&lt;&lt;" "&lt;&lt; count2 &lt;&lt; endl; &#125;&#125;;int main()&#123; int n; int temp; while (cin &gt;&gt; n) &#123; vector&lt;int&gt;v; for (int i = 0; i &lt; n; i++) &#123; cin &gt;&gt; temp; v.push_back(temp); &#125; Solution s; s.fun(v); &#125;&#125; 算法首先进行排序首先看差值最小的对数：1.首先计算出最小差值是多少2,根据这个差值来判断2.1 如果差值为0，则是有相同的数，（比如3，3，3则有3对）不能单纯的计算相同数的个数，因为可能存在（3，3，2，2）这种情况，所以必须要遍历字符串，用1int j来寻找每个数相同个数的对数。 2.2 如果差值不为0，则直接计算有多少对差值为最小值的对数。 对于最大值的差值：由于是有序的，可以直接最大的值和最小的值是多少，再根据循环找出最大值和最小值的个数1，如果最小值个数等于最大值的个数，即整个序列相等，对数为n* （n-1）/22，如果不相等，则对数为两个数想乘。 注意本算法的关键有两点：1.首先要排序，可以利用1algorithm头文件中的sort函数直接进行排序 2.判断最小值对数的时候要慢慢来，先算出值，再算对数，要格外注意最小值为0的情况。]]></content>
       <categories>
         <category>牛客网</category>
       </categories>
       <tags>
         <tag>c++</tag>
         <tag>算法</tag>
+        <tag>腾讯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[牛客网]构造回文]]></title>
+    <url>%2F2018%2F11%2F06%2F%E7%89%9B%E5%AE%A2%E7%BD%91-%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%2F</url>
+    <content type="text"><![CDATA[给定一个字符串s，你可以从中删除一些字符，使得剩下的串是一个回文串。如何删除才能使得回文串最长呢？输出需要删除的字符个数。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143#include&lt;iostream&gt; #include&lt;algorithm&gt; #include&lt;string&gt; using namespace std; const int maxn = 1010; class Solution &#123; public: void xuliechangdu(string a,string b, int** Maxnum, int **f,int len1,int len2) &#123;//求应删除的个数 reverse(b.begin(), b.end()); for (int m = 0; m &lt; len1; m++) &#123; Maxnum[m][0] = 0; Maxnum[0][m] = 0; &#125; for (int i = 1; i &lt;= len1; i++) &#123; for (int j = 1; j &lt;= len2; j++) &#123; if (a[i - 1] == b[j - 1]) &#123; Maxnum[i][j] = Maxnum[i - 1][j - 1] + 1; f[i][j] = 1; &#125; else if (Maxnum[i - 1][j] &gt; Maxnum[i][j - 1]) &#123; Maxnum[i][j] = Maxnum[i - 1][j]; f[i][j] = 2; &#125; else &#123; Maxnum[i][j] = Maxnum[i][j - 1]; f[i][j] = 3; &#125; &#125; &#125; int result =len1- Maxnum[len1][len2]; cout &lt;&lt; result &lt;&lt; endl;&#125;void printzixulie(string a, int **f,int n,int m,string &amp;re)//打印出回文串&#123; if (m ==0|| n== 0) return; else if (f[n][m] == 1) &#123; printzixulie(a, f, n - 1, m - 1,re); re.push_back(a[n - 1]); cout &lt;&lt; a[n - 1] &lt;&lt; endl; &#125; else if (f[n][m] == 2) printzixulie(a, f, n - 1, m,re); else printzixulie(a, f, n, m - 1,re); &#125;void PrintOneLCS(string &amp;str1, string &amp;str2, int i, int j, int** &amp;veca) &#123; string lcs_str; while (i &gt; 0 &amp;&amp; j &gt; 0) &#123; if (str1[i - 1] == str2[j - 1]) &#123; lcs_str = str1[i - 1] + lcs_str; --i; --j; &#125; else &#123; //如果左边存在LCS就从左边找否则再从右边找 if (veca[i - 1][j] &gt;= veca[i][j - 1]) --i; else --j; &#125; &#125; cout &lt;&lt; lcs_str &lt;&lt; endl;&#125;void allprint(string &amp;s,string &amp;b,int i,int j,int**&amp;Maxnum,string re)&#123; while (i &gt; 0 &amp;&amp; j &gt; 0) &#123; if (s[i - 1] == b[j - 1]) &#123; re = s[i - 1] + re+" " ; //逆向存放 cout &lt;&lt; re &lt;&lt; endl; --i; --j; &#125; else &#123; if (Maxnum[i - 1][j] &gt; Maxnum[i][j - 1]) //向左走 --i; else if (Maxnum[i - 1][j] &lt; Maxnum[i][j - 1]) //向上走 --j; else &#123; //此时向上向右均为LCS的元素 allprint(s, b, i - 1, j, Maxnum, re); allprint(s, b, i, j - 1, Maxnum, re); return; &#125; &#125; &#125; cout&lt;&lt; re &lt;&lt; endl; /*re.insert(lcs_str);*/&#125; int main() &#123; string s; while (cin &gt;&gt; s) &#123; string b = s; string re; string str2=s; reverse(str2.begin(), str2.end()); int len1 = s.length(); int len2 = b.length(); const int maxn = 1010; int **Maxnum; Maxnum = new int *[maxn]; for (int i = 0; i &lt; maxn; i++) Maxnum[i] = new int[maxn]; /* int Maxnum[maxn][maxn];*/ Solution so; int **f; f = new int*[maxn]; for (int j = 0; j &lt; maxn;j++) f[j]=new int[maxn]; //so.xuliechangdu(s,b,Maxnum,f,len1,len2); //so.printzixulie(s,f,len1,len2,re); //so.PrintOneLCS(s, str2, len1, len2, Maxnum); /*so.allprint(s,str2,len1,len2, Maxnum, re);*/ so.zichuanchangdu(s, b, Maxnum, f, len1, len2); cout &lt;&lt; re &lt;&lt; endl; for (int q = 0; q &lt; maxn; q++) &#123; delete[] Maxnum[q]; &#125; delete[]Maxnum; &#125; &#125; 算法这道题可以看成是求解一个序列和此序列倒序列的最长公共子序列长度问题（LCS），解决此类方法的算法核心是动态规划算法 动态规划算法序列A=(a1,a2,a3……an)，序列B=(b1,b2,b3……bm)，它们的LCS为序列C(c1,c2,c3……ck)123如果an=bm,则ck=an=bm，且ck-1是an-1和bm-1的LCS如果an≠bm，则ck≠an，所以c是an-1和bm的LCS如果an≠bm，则ck≠bm，所以c是bm-1和an的LCS 所以，用p(i,j)来表示序列长度123当n=0，或m=0，p(n,m)=0当n，m≠0，且an=bm，p(n,m)=p(n-1,m-1)+1当n，m≠0，且an≠bm，p(n,m)=max&#123;p(n-1,m),p(n,m-1)&#125; 对应上述的xuliechangdu函数 补充当找到回文串时，需要把这个回文串打印出来，利用动态规划的逆想法，如上述的12void printzixulie(string a, int **f,int n,int m,string &amp;re)&#123;&#125; 通过对求取序列长度函数中的tag标号来判断当前下标的字符是否需要输出，同样利用递归的思想，逐个输出tag为1时相对应下标的字符。 注意本文所述的算法仅适用于本题算法，动态规划问题可以求取两个不同字串的公共字符串长度，需要在本文的算法上稍作修改121.对于输入，需要输入两个不同的字符串2.对于输出，由于公共子串不一定是回文，所以本文的输出是从后往前输出，需要注意反序]]></content>
+      <categories>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+        <tag>腾讯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[牛客网]字符移位]]></title>
+    <url>%2F2018%2F11%2F05%2Fleetcode-%E5%AD%97%E7%AC%A6%E7%A7%BB%E4%BD%8D%2F</url>
+    <content type="text"><![CDATA[小Q最近遇到了一个难题：把一个字符串的大写字母放到字符串的后面，各个字符的相对位置不变，且不能申请额外的空间。你能帮帮小Q吗？ 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;iostream&gt; #include &lt;string&gt; using namespace std; class Solution &#123; public: void zifu2(string s) &#123; int len1 = s.length(); char c; int end = len1; for (int i = 0; i &lt; end;) &#123; c = s[i]; if (c &gt;= 'A'&amp;&amp;c &lt;= 'Z') &#123; for (int j = i; j &lt; len1 - 1; j++) &#123; s[j] = s[j + 1]; &#125; s[len1 - 1] = c; end--; &#125; else i++; &#125; cout &lt;&lt; s &lt;&lt; endl; &#125; &#125;; int main() &#123; string s; while (cin &gt;&gt; s) &#123; Solution so; //so.zifu(); so.zifu2(s); &#125; &#125; 算法对字符串进行循环，循环当中的判断不定（这是本题的关键）如果遇到大写字母，则通过类似冒泡排序的方法一样把这个字母放到最后，此时循环的判断是将end值减少1，即将字符串长度减小1，如果不是大写字母，则此时的判断是将i加1，即判断后面一个字母。这样通过对整个字符串遍历就可以完成任务。]]></content>
+      <categories>
+        <category>牛客网</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+        <tag>腾讯</tag>
       </tags>
   </entry>
   <entry>
